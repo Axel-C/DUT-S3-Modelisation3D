@@ -1,10 +1,10 @@
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class MyFrame extends JFrame {
+public class MyJFrame extends JFrame {
 	private ThreeDimensionalSpace threeDimensionalSpace;
 	
-	public MyFrame(ThreeDimensionalSpace threeDimensionalSpace){
+	public MyJFrame(ThreeDimensionalSpace threeDimensionalSpace){
 		super("Projet Modelisation");
 		super.setSize(500, 500);
 		super.setContentPane(threeDimensionalSpace);

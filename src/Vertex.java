@@ -1,18 +1,27 @@
 
 public class Vertex {
-	private int x,y,z;
-	public Vertex(int x, int y, int z) {
+	private double x, y, z;
+	
+	public Vertex(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
-	public int getX() {
+
+	public double getX() {
 		return x;
 	}
-	public int getY() {
+
+	public double getY() {
 		return y;
 	}
-	public int getZ() {
+
+	public double getZ() {
 		return z;
+	}
+
+	@Override
+	public String toString() {
+		return "Vertex [x=" + x + ", y=" + y + ", z=" + z + "]";
 	}
 }
