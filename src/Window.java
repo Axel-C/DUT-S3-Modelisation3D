@@ -1,8 +1,8 @@
 import javax.swing.JFrame;
 
-public class Interface extends JFrame {
+public class Window extends JFrame {
 	
-	public Interface(){
+	public Window(){
 		super("Projet Modelisation");
 		setSize(500, 500);
 		
