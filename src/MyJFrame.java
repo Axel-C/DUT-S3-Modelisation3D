@@ -2,13 +2,13 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class MyJFrame extends JFrame {
-	private ThreeDimensionalSpace threeDimensionalSpace;
+	private Space space;
 	
-	public MyJFrame(ThreeDimensionalSpace threeDimensionalSpace){
+	public MyJFrame(Space space){
 		super("Projet Modelisation");
 		super.setSize(500, 500);
-		this.threeDimensionalSpace = threeDimensionalSpace;
-		super.setContentPane(threeDimensionalSpace);
+		this.space = space;
+		super.setContentPane(space);
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		super.setVisible(true);
 		
@@ -18,11 +18,11 @@ public class MyJFrame extends JFrame {
 		setJMenuBar(menu);*/
 	}
 	
-	public ThreeDimensionalSpace getThreeDimensionalSpace() {
-		return threeDimensionalSpace;
+	public Space getSpace() {
+		return space;
 	}
 	
 	public void refresh() {
-		threeDimensionalSpace.repaint();
+		space.repaint();
 	}
 }
