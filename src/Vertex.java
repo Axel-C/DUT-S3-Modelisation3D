@@ -1,6 +1,3 @@
-package src;
-
-
 public class Vertex {
 	private double x, y, z;
 	
