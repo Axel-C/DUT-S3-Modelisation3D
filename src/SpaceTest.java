@@ -10,7 +10,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SpaceTest {
 	File plyFile= new File("livrable1/data/test_file1.ply");
-	File plyFileTxt= new File("livrable1/data/test_file1.txt");
+	File plyFileText= new File("livrable1/data/test_file1.txt");
 	Space s=new Space(new Model(plyFile),3);
 	
 	private boolean ouvrable(File file) {
@@ -24,7 +24,7 @@ public class SpaceTest {
 	@Test
 	public void testOuvrable() {
 		assertTrue(ouvrable(plyFile));
-		assertFalse(ouvrable(plyFileTxt));
+		assertFalse(ouvrable(plyFileText));
 	}
 
 }
