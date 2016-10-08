@@ -37,8 +37,8 @@ public class Model {
 			}
 			for (int i = 0; i < vertices.length; i++) {
 				lineRead = bufferedReader.readLine();
-				vertices[i] = new Vertex(Integer.valueOf(lineRead.split(" ")[0]),
-						Integer.valueOf(lineRead.split(" ")[1]), Integer.valueOf(lineRead.split(" ")[2]));
+				vertices[i] = new Vertex(Double.valueOf(lineRead.split(" ")[0]),
+						Double.valueOf(lineRead.split(" ")[1]), Double.valueOf(lineRead.split(" ")[2]));
 			}
 			for (int i = 0; i < faces.length; i++) {
 				lineRead = bufferedReader.readLine();
