@@ -1,3 +1,5 @@
+package src;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,19 +13,19 @@ public class Main {
 		File file;
 		MyJFrame frame;
 		if (args.length == 0 || args.length > 2) {
-			System.out.println("Le nombre de paramètres est incorrect.");
+			System.out.println("Le nombre de paramï¿½tres est incorrect.");
 		} else {
 			filePath = args[args.length - 1];
 			if (args.length > 1) {
 				if (!args[0].equals("-s") && !args[0].equals("-f")) {
-					System.out.println("L'option spécifiée est incorrect.");
+					System.out.println("L'option spï¿½cifiï¿½e est incorrect.");
 				} else {
 					option = args[0];
 				}
 			}
 			file = new File(filePath);
 			if (!file.exists()) {
-				System.out.println("Le chemin spécifié est introuvable.");
+				System.out.println("Le chemin spï¿½cifiï¿½ est introuvable.");
 			} else if (!isAPlyFile(file)) {
 				System.out.println("Le fichier n'est pas au format PLY.");
 			} else {

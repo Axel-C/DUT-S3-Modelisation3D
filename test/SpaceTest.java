@@ -1,3 +1,4 @@
+package test;
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -6,6 +7,7 @@ import java.io.IOException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import src.*;
 
 @RunWith(JUnit4.class)
 public class SpaceTest {
@@ -25,6 +27,15 @@ public class SpaceTest {
 	public void testOuvrable() {
 		assertTrue(ouvrable(plyFile));
 		assertFalse(ouvrable(plyFileText));
+	}
+	
+	@Test
+	public void testVertex() {
+		
+	}
+	
+	public void testFaces() {
+		
 	}
 
 }
