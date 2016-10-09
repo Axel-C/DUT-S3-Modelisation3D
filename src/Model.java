@@ -53,7 +53,7 @@ public class Model {
 				}
 				faces[i] = new Face(faceVertices);
 			}
-			//AlgoDuPeintre();
+			AlgoDuPeintre();
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
