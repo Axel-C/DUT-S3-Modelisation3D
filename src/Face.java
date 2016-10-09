@@ -30,7 +30,13 @@ public class Face implements Comparable<Face>{
 	public int compareTo(Face face) {
 		double z1 = this.getMaximumZ();
 		double z2 = face.getMaximumZ();
-		return (int) (z1 - z2) ;
+		if(z1 < z2) {
+			return -1;
+		} else if(z1 > z2) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 	
 

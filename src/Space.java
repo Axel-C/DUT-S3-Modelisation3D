@@ -20,7 +20,7 @@ public class Space extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
-		int zoom = 3500;
+		int zoom = 5000;
 		int xAxis = super.getWidth()/2;
 		int yAxis = super.getHeight()/4;
 		int[] xPoints = new int[model.getFaces()[0].getVertices().length];
