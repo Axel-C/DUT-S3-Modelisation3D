@@ -24,7 +24,7 @@ public class Main {
 			}
 			file = new File(filePath);
 			if (!file.exists()) {
-				System.out.println("Le chemin est introuvable.");
+				System.out.println("Le chemin du fichier est introuvable.");
 			} else if (!isAPlyFile(file)) {
 				System.out.println("Le fichier n'est pas au format PLY.");
 			} else {
