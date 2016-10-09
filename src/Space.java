@@ -1,5 +1,6 @@
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -19,22 +20,26 @@ public class Space extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
-		int a = 25;
-		int b = super.getWidth()/2;
-		int c = super.getHeight()/2;
+		int zoom = 1500;
+		int xAxis = super.getWidth()/2;
+		int yAxis = super.getHeight()/4;
 		int[] xPoints = new int[model.getFaces()[0].getVertices().length];
 		int[] yPoints = new int[model.getFaces()[0].getVertices().length];
 		for (int i = 0; i < model.getFaces().length; i++) {
 			for (int j = 0; j < model.getFaces()[i].getVertices().length; j++) {
-				xPoints[j] = (int) ((model.getFaces()[i].getVertices()[j].getX() * a) + b);
-				yPoints[j] = (int) ((model.getFaces()[i].getVertices()[j].getY() * a) + c);
+				xPoints[j] = (int) ((model.getFaces()[i].getVertices()[j].getX() * zoom) + xAxis);
+				yPoints[j] = super.getHeight() - ((int) ((model.getFaces()[i].getVertices()[j].getY() * zoom) + yAxis));
 			}
 			if (paintMode == ONLY_SEGMENTS) {
-				g.drawPolyline(xPoints, yPoints, model.getFaces()[i].getVertices().length);
+				g.setColor(Color.BLACK);
+				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			} else if (paintMode == ONLY_FACES) {
+				g.setColor(Color.GRAY);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			} else {
-				g.drawPolyline(xPoints, yPoints, model.getFaces()[i].getVertices().length);
+				g.setColor(Color.BLACK);
+				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
+				g.setColor(Color.GRAY);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			}
 		}

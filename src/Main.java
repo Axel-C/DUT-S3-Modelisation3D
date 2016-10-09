@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,16 +28,17 @@ public class Main {
 			} else if (!isAPlyFile(file)) {
 				System.out.println("Le fichier n'est pas au format PLY.");
 			} else {
-				if(!checkPlyFile(file)) {
+				if (!checkPlyFile(file)) {
 					System.out.println("Le fichier PLY est incorrect.");
 				} else {
-					if(option.equals("-s")) {
+					if (option.equals("-s")) {
 						frame = new MyJFrame(new Space(new Model(file), Space.ONLY_SEGMENTS));
-					} else if(option.equals("-f")) {
+					} else if (option.equals("-f")) {
 						frame = new MyJFrame(new Space(new Model(file), Space.ONLY_FACES));
 					} else {
 						frame = new MyJFrame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
-					} frame.refresh();
+					}
+					frame.refresh();
 				}
 			}
 		}
@@ -69,14 +69,15 @@ public class Main {
 			bufferedReader.readLine();
 			lineRead = bufferedReader.readLine();
 			splitedLineRead = lineRead.split(" ");
-			if(splitedLineRead.length != 3) {
+			if (splitedLineRead.length != 3) {
 				checked = false;
 			} else {
-				if(!splitedLineRead[0].equals("element") || !splitedLineRead[1].equals("vertex") || !isAnInteger(splitedLineRead[2])) {
+				if (!splitedLineRead[0].equals("element") || !splitedLineRead[1].equals("vertex")
+						|| !isAnInteger(splitedLineRead[2])) {
 					checked = false;
 				} else {
 					nVertices = Integer.parseInt(splitedLineRead[2]);
-					if(nVertices < 0){
+					if (nVertices < 0) {
 						checked = false;
 					}
 				}
@@ -86,14 +87,15 @@ public class Main {
 			bufferedReader.readLine();
 			lineRead = bufferedReader.readLine();
 			splitedLineRead = lineRead.split(" ");
-			if(splitedLineRead.length != 3) {
+			if (splitedLineRead.length != 3) {
 				checked = false;
 			} else {
-				if(!splitedLineRead[0].equals("element") || !splitedLineRead[1].equals("face") || !isAnInteger(splitedLineRead[2])) {
+				if (!splitedLineRead[0].equals("element") || !splitedLineRead[1].equals("face")
+						|| !isAnInteger(splitedLineRead[2])) {
 					checked = false;
 				} else {
 					nFaces = Integer.parseInt(splitedLineRead[2]);
-					if(nFaces < 0){
+					if (nFaces < 0) {
 						checked = false;
 					}
 				}
@@ -101,16 +103,17 @@ public class Main {
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} return checked;
+		}
+		return checked;
 	}
-	
+
 	private static boolean isAnInteger(String str) {
 		try {
 			Integer.parseInt(str);
-		} catch (NumberFormatException e){
+		} catch (NumberFormatException e) {
 			return false;
 		}
- 
+
 		return true;
 	}
 }
