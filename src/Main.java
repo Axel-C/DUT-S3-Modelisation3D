@@ -12,12 +12,12 @@ public class Main {
 		String option = "";
 		File file;
 		if (args.length == 0 || args.length > 2) {
-			System.out.println("Le nombre de param�tres est incorrect.");
+			System.out.println("Le nombre de parametres est incorrect.");
 		} else {
 			filePath = args[args.length - 1];
 			if (args.length > 1) {
 				if (!args[0].equals("-s") && !args[0].equals("-f")) {
-					System.out.println("L'option sp�cifi�e est incorrect.");
+					System.out.println("L'option specifiee est incorrect.");
 				} else {
 					option = args[0];
 				}
@@ -32,13 +32,24 @@ public class Main {
 					//System.out.println("Le fichier PLY est incorrect.");
 				//} else {
 					if (option.equals("-s")) {
-						frame = new MyJFrame(new Space(new Model(file), Space.ONLY_SEGMENTS));
+						try {
+							frame = new MyJFrame(new Space(new Model(file), Space.ONLY_SEGMENTS));
+						} catch (Exception e) {
+							System.out.println("Le fichier PLY est incorrect.");
+						}
 					} else if (option.equals("-f")) {
-						frame = new MyJFrame(new Space(new Model(file), Space.ONLY_FACES));
+						try {
+							frame = new MyJFrame(new Space(new Model(file), Space.ONLY_FACES));
+						} catch (Exception e) {
+							System.out.println("Le fichier PLY est incorrect.");
+						}
 					} else {
-						frame = new MyJFrame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
+						try {
+							frame = new MyJFrame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
+						} catch (Exception e) {
+							System.out.println("Le fichier PLY est incorrect.");
+						}
 					}
-					frame.refresh();
 				//}
 			}
 		}
@@ -53,6 +64,7 @@ public class Main {
 		return ext.equals(".ply");
 	}
 
+	@SuppressWarnings("unused")
 	private static boolean checkPlyFile(File plyFile) {
 		BufferedReader bufferedReader;
 		String lineRead = "";

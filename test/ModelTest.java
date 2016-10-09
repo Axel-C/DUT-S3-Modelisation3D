@@ -1,6 +1,3 @@
-package test;
-import src.*;
-
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -13,7 +10,7 @@ import org.junit.runners.JUnit4;
 public class ModelTest {
 	File plyFile= new File("livrable1/data/test_file1.ply");
 	File plyFileText= new File("livrable1/data/test_file1.txt");
-	Model m= new Model(plyFile);
+	Model m;
 	
 	Vertex[] plyVertex= new Vertex[8];
 	{
@@ -52,6 +49,11 @@ public class ModelTest {
 
 	@Test
 	public void testVertex() {
+		try {
+			m= new Model(plyFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		for(int i=0; i<plyVertex.length;i++) {
 			assertEquals(plyVertex[i].getX(),m.getVertices()[i].getX(),0.1);
 			assertEquals(plyVertex[i].getY(),m.getVertices()[i].getY(),0.1);
@@ -62,6 +64,11 @@ public class ModelTest {
 
 	@Test
 	public void testFace() {
+		try {
+			m= new Model(plyFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		for(int i=0; i<fa.length;i++) {
 			for(int j=0; j<fa[i].getVertices().length;j++) {
 				assertEquals(fa[i].getVertices()[j].getX(),m.getFaces()[i].getVertices()[j].getX(),0.1);

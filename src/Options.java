@@ -6,6 +6,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+@SuppressWarnings("serial")
 public class Options extends JFrame {
 	public static int Xvector = 0 ;
 	public static int Yvector = 0 ;
