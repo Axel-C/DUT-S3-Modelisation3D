@@ -25,6 +25,15 @@ public class ModelTest {
 	plyVertex[6]= new Vertex(1.0,1.0,1.0);
 	plyVertex[7]= new Vertex(-1.0,1.0,1.0);
 	}
+	
+	Face[] fa= new Face[6]; {
+	fa[0]=new Face(new Vertex[] {plyVertex[0],plyVertex[1],plyVertex[2],plyVertex[3]});
+	fa[1]=new Face(new Vertex[] {plyVertex[5],plyVertex[4],plyVertex[7],plyVertex[6]});
+	fa[2]=new Face(new Vertex[] {plyVertex[6],plyVertex[2],plyVertex[1],plyVertex[5]});
+	fa[3]=new Face(new Vertex[] {plyVertex[3],plyVertex[7],plyVertex[4],plyVertex[0]});
+	fa[4]=new Face(new Vertex[] {plyVertex[7],plyVertex[3],plyVertex[2],plyVertex[6]});
+	fa[5]=new Face(new Vertex[] {plyVertex[5],plyVertex[1],plyVertex[0],plyVertex[4]});
+	}
 
 	private boolean ouvrable(File file) {
 		String ext="";
@@ -50,14 +59,15 @@ public class ModelTest {
 
 	}
 
-	/*@Test
+	@Test
 	public void testFace() {
-		Face[] fa= new Face[6];
-		fa[0]=new Face(new Vertex[] {plyVertex[0],plyVertex[1],plyVertex[2],plyVertex[3]});
-		fa[1]=new Face(new Vertex[] {plyVertex[5],plyVertex[4],plyVertex[7],plyVertex[6]});
-		fa[2]=new Face(new Vertex[] {plyVertex[6],plyVertex[2],plyVertex[1],plyVertex[5]});
-		fa[3]=new Face(new Vertex[] {plyVertex[3],plyVertex[7],plyVertex[4],plyVertex[0]});
-		fa[4]=new Face(new Vertex[] {plyVertex[7],plyVertex[3],plyVertex[2],plyVertex[6]});
-		fa[5]=new Face(new Vertex[] {plyVertex[5],plyVertex[1],plyVertex[0],plyVertex[4]});
-	}*/
+		for(int i=0; i<fa.length;i++) {
+			for(int j=0; j<4;j++) {
+				assertEquals(fa[i].getVertices()[j].getX(),m.getFaces()[i].getVertices()[j].getX(),0.1);
+				assertEquals(fa[i].getVertices()[j].getY(),m.getFaces()[i].getVertices()[j].getY(),0.1);
+				assertEquals(fa[i].getVertices()[j].getZ(),m.getFaces()[i].getVertices()[j].getZ(),0.1);
+			}
+		}
+	
+	}
 }
