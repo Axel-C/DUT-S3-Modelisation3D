@@ -37,10 +37,11 @@ public class Space extends JPanel {
 				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			} else {
-				g.setColor(Color.BLACK);
-				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
+				
 				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
+				g.setColor(Color.BLACK);
+				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			}
 		}
 	}

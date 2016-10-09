@@ -31,9 +31,9 @@ public class Face implements Comparable<Face>{
 		double z1 = this.getMaximumZ();
 		double z2 = face.getMaximumZ();
 		if(z1 < z2) {
-			return -1;
-		} else if(z1 > z2) {
 			return 1;
+		} else if(z1 > z2) {
+			return -1;
 		} else {
 			return 0;
 		}
