@@ -4,12 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Model {
@@ -57,7 +53,7 @@ public class Model {
 				}
 				faces[i] = new Face(faceVertices);
 			}
-			AlgoDuPeintre();
+			//AlgoDuPeintre();
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,9 +61,6 @@ public class Model {
 		
 	}
 	public void AlgoDuPeintre(){
-		List<Face> list =  Arrays.asList(faces);
-		Collections.sort(list);
-		faces = (Face[]) list.toArray() ;
-		System.out.println("done");
+		Collections.sort(Arrays.asList(faces), Collections.reverseOrder());
 	}
 }
