@@ -20,7 +20,7 @@ public class Space extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
-		int zoom = 1500;
+		int zoom = 3500;
 		int xAxis = super.getWidth()/2;
 		int yAxis = super.getHeight()/4;
 		int[] xPoints = new int[model.getFaces()[0].getVertices().length];
@@ -34,12 +34,12 @@ public class Space extends JPanel {
 				g.setColor(Color.BLACK);
 				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			} else if (paintMode == ONLY_FACES) {
-				g.setColor(Color.GRAY);
+				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			} else {
 				g.setColor(Color.BLACK);
 				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
-				g.setColor(Color.GRAY);
+				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getVertices().length);
 			}
 		}

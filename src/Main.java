@@ -28,9 +28,9 @@ public class Main {
 			} else if (!isAPlyFile(file)) {
 				System.out.println("Le fichier n'est pas au format PLY.");
 			} else {
-				if (!checkPlyFile(file)) {
-					System.out.println("Le fichier PLY est incorrect.");
-				} else {
+				//if (!checkPlyFile(file)) {
+					//System.out.println("Le fichier PLY est incorrect.");
+				//} else {
 					if (option.equals("-s")) {
 						frame = new MyJFrame(new Space(new Model(file), Space.ONLY_SEGMENTS));
 					} else if (option.equals("-f")) {
@@ -39,7 +39,7 @@ public class Main {
 						frame = new MyJFrame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
 					}
 					frame.refresh();
-				}
+				//}
 			}
 		}
 
