@@ -5,12 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
+	public static MyJFrame frame;
 
 	public static void main(String[] args) {
 		String filePath = "";
 		String option = "";
 		File file;
-		MyJFrame frame;
 		if (args.length == 0 || args.length > 2) {
 			System.out.println("Le nombre de param�tres est incorrect.");
 		} else {
@@ -24,7 +24,7 @@ public class Main {
 			}
 			file = new File(filePath);
 			if (!file.exists()) {
-				System.out.println("Le chemin sp�cifi� est introuvable.");
+				System.out.println("Le chemin est introuvable.");
 			} else if (!isAPlyFile(file)) {
 				System.out.println("Le fichier n'est pas au format PLY.");
 			} else {

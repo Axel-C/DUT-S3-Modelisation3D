@@ -8,11 +8,14 @@ public class MyJFrame extends JFrame {
 	
 	public MyJFrame(Space space){
 		super("Projet Modelisation");
-		super.setSize(500, 500);
+		setSize(500, 500);
 		this.space = space;
-		super.setContentPane(space);
-		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		super.setVisible(true);
+		setContentPane(space);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		new Options();
+		
 		
 		/*JMenuBar menu= new JMenuBar();
 		JMenu fichier = new JMenu("Fichier");
