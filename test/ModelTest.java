@@ -14,6 +14,7 @@ public class ModelTest {
 	File plyFile= new File("livrable1/data/test_file1.ply");
 	File plyFileText= new File("livrable1/data/test_file1.txt");
 	Model m= new Model(plyFile);
+	
 	Vertex[] plyVertex= new Vertex[8];
 	{
 	plyVertex[0]= new Vertex(-1.0,-1.0,-1.0);
@@ -62,7 +63,7 @@ public class ModelTest {
 	@Test
 	public void testFace() {
 		for(int i=0; i<fa.length;i++) {
-			for(int j=0; j<4;j++) {
+			for(int j=0; j<fa[i].getVertices().length;j++) {
 				assertEquals(fa[i].getVertices()[j].getX(),m.getFaces()[i].getVertices()[j].getX(),0.1);
 				assertEquals(fa[i].getVertices()[j].getY(),m.getFaces()[i].getVertices()[j].getY(),0.1);
 				assertEquals(fa[i].getVertices()[j].getZ(),m.getFaces()[i].getVertices()[j].getZ(),0.1);
