@@ -1,6 +1,7 @@
+package projetmode;
 import java.util.Arrays;
 
-public class Face implements Comparable<Face>{
+public class Face implements Comparable<Face> {
 	private Vertex[] vertices;
 
 	public Face(Vertex[] vertices) {
@@ -15,29 +16,28 @@ public class Face implements Comparable<Face>{
 	public String toString() {
 		return "Face [vertices=" + Arrays.toString(vertices) + "]";
 	}
-	
-	public double getMaximumZ(){
-		double max = vertices[0].getZ() ;
-		 for(int i = 1 ; i < vertices.length ; i++){
-			 if(vertices[i].getZ() > max ){
-				 max = vertices[i].getZ();
-			 }
-		 }
-		return max ;
+
+	public double getMaximumZ() {
+		double max = vertices[0].getZ();
+		for (int i = 1; i < vertices.length; i++) {
+			if (vertices[i].getZ() > max) {
+				max = vertices[i].getZ();
+			}
+		}
+		return max;
 	}
 
 	@Override
 	public int compareTo(Face face) {
 		double z1 = this.getMaximumZ();
 		double z2 = face.getMaximumZ();
-		if(z1 < z2) {
+		if (z1 < z2) {
 			return 1;
-		} else if(z1 > z2) {
+		} else if (z1 > z2) {
 			return -1;
 		} else {
 			return 0;
 		}
 	}
-	
 
 }

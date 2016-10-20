@@ -1,7 +1,9 @@
+package projetmode;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -9,7 +11,7 @@ public class Model {
 	private Vertex[] vertices;
 	private Face[] faces;
 
-	public Model(File plyFile) throws Exception {
+	public Model(File plyFile) throws IOException {
 		constructFromPlyFile(plyFile);
 	}
 
@@ -21,7 +23,7 @@ public class Model {
 		return faces;
 	}
 
-	public void constructFromPlyFile(File plyFile) throws Exception {
+	public void constructFromPlyFile(File plyFile) throws IOException {
 		BufferedReader bufferedReader;
 		String lineRead = "";
 		bufferedReader = new BufferedReader(new FileReader(plyFile));
