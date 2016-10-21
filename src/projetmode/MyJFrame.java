@@ -26,9 +26,9 @@ public class MyJFrame extends JFrame {
 
 	private void initializeOptions() {
 		options = new JMenuBar();
-		JSlider zoomSlider = new JSlider(0, 10000, 0);
-		JSlider xVectorSlider = new JSlider(-1000, 1000, -1000);
-		JSlider yVectorSlider = new JSlider(-1000, 1000, -1000);
+		final JSlider zoomSlider = new JSlider(0, 10000, 0);
+		final JSlider xVectorSlider = new JSlider(-1000, 1000, -1000);
+		final JSlider yVectorSlider = new JSlider(-1000, 1000, -1000);
 		zoomSlider.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
