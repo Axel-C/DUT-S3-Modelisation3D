@@ -14,6 +14,10 @@ public class Model {
 	public Model(File plyFile) throws IOException {
 		constructFromPlyFile(plyFile);
 	}
+	
+	public Model(String contenu){
+		// à remplir 
+	}
 
 	public Vertex[] getVertices() {
 		return vertices;

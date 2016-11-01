@@ -1,13 +1,9 @@
  package database;
  
- import java.awt.Dimension;
  
- import javax.swing.JLabel;
-	
- import javax.swing.JPanel;
  
  @SuppressWarnings("serial")
- public class Fichier extends JPanel{
+ public class Fichier{
  	private int id ;
  	public String nom ; 
  	public String contenu ;
@@ -22,8 +18,6 @@
  		this.points = points ;
  		this.segments = segments ;
  		this.faces = faces ;
- 		add(new JLabel(nom));
- 		setMaximumSize(new Dimension(200, 20));
  	}
  	
  	public String toString(){
