@@ -49,7 +49,7 @@ import javax.swing.ListSelectionModel;
  	 	JPanel boutons = new JPanel() ;
  	 	boutons.setLayout(new BoxLayout(boutons, BoxLayout.X_AXIS));
  	 	getContentPane().add(boutons, BorderLayout.SOUTH);
- 	 		
+ 	 		// Ouvrir
  	 	JButton ouvrir = new JButton("Ouvrir");
  	 	ouvrir.addActionListener(new ActionListener() {
 			
@@ -62,7 +62,17 @@ import javax.swing.ListSelectionModel;
 			}
 		});
  	 	boutons.add(ouvrir);
- 		
+ 	 		// Supprimer 
+ 	 	JButton supprimer = new JButton("Supprimer");
+ 	 	supprimer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+ 		boutons.add(supprimer);
  		
  		setVisible(true);
  	}

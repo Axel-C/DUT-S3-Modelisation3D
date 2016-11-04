@@ -16,7 +16,7 @@ public class Model {
 	}
 	
 	public Model(String contenu){
-		// à remplir 
+		// ï¿½ remplir 
 	}
 
 	public Vertex[] getVertices() {
@@ -60,6 +60,7 @@ public class Model {
 	}
 
 	public void AlgoDuPeintre() {
+		System.out.println("Algo du peintre");
 		Collections.sort(Arrays.asList(faces), Collections.reverseOrder());
 	}
 }

@@ -5,11 +5,14 @@
  
  public class Data
  {
- 	
+	 static Connection c = null;
+     static Statement stmt = null;
+ 	/**
+ 	 * Renvoi le contenu de la table "Files" de la base de donnée 
+ 	 * @return une ArrayList avec le contenu de la table
+ 	 */
    public static ArrayList<Fichier> getData()
    {
-     Connection c = null;
-     Statement stmt = null;
      ArrayList<Fichier> fichiers = new ArrayList<>();
      try {
      	
@@ -46,6 +49,8 @@
      return fichiers ;
      
    }
+   
+   public static boolean DeleteData()
    
    
  }
