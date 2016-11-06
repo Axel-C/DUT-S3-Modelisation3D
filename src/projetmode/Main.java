@@ -27,11 +27,11 @@ public class Main {
 			} else {
 				try {
 					if (option.equals("-s")) {
-						new MyJFrame(new Space(new Model(file), Space.ONLY_SEGMENTS));
+						new Frame(new Space(new Model(file), Space.ONLY_SEGMENTS));
 					} else if (option.equals("-f")) {
-						new MyJFrame(new Space(new Model(file), Space.ONLY_FACES));
+						new Frame(new Space(new Model(file), Space.ONLY_FACES));
 					} else {
-						new MyJFrame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
+						new Frame(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
 					}
 				} catch (IOException e) {
 					System.out.println("Le fichier PLY est incorrect.");
