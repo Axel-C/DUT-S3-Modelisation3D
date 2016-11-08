@@ -101,10 +101,16 @@ public class Fenetre extends JFrame implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			space.rotateModel(Axis.Y, 1);
 			space.repaint();
-		} /* else if (e.getKeyCode() == KeyEvent.VK_R) {
+		} else if (e.getKeyCode() == KeyEvent.VK_I) {
+			space.rotateModel(Axis.Z, -1);
+			space.repaint();
+		} else if (e.getKeyCode() == KeyEvent.VK_K) {
+			space.rotateModel(Axis.Z, 1);
+			space.repaint();
+		} else if (e.getKeyCode() == KeyEvent.VK_R) {
 			space.adjustModel();
 			space.repaint();
-		} */
+		}
 		System.out.println(space.getModel().getFaces()[0]);
 	}
 

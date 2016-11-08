@@ -21,6 +21,66 @@ public class Model {
 		
 	}
 	
+	/**
+	 * @author Groupe K5
+	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans le tableau de Face "faces"
+	 * pour lequel la valeur X est la plus petite.
+	 * @return double min
+	 * */
+	public double getXMin(){
+		double min=faces[0].getXMin();
+		for (int i = 1 ; i < faces.length ; i++){
+			if (faces[i].getXMin()<min)
+				min = faces[i].getXMin();
+		}
+		return min;
+	}
+	
+	/**
+	 * @author Groupe K5
+	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans le tableau de Face "faces"
+	 * pour lequel la valeur X est la plus grande.
+	 * @return double max
+	 * */
+	public double getXMax(){
+		double max=faces[0].getXMax();
+		for (int i = 1 ; i < faces.length ; i++){
+			if (faces[i].getXMax()>max)
+				max = faces[i].getXMax();
+		}
+		return max;
+	}
+	
+	/**
+	 * @author Groupe K5
+	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans le tableau de Face "faces"
+	 * pour lequel la valeur Y est la plus petite.
+	 * @return double min
+	 * */
+	public double getYMin(){
+		double min=faces[0].getYMin();
+		for (int i = 1 ; i < faces.length ; i++){
+			if (faces[i].getYMin()<min)
+				min = faces[i].getYMin();
+		}
+		return min;
+	}
+	
+	/**
+	 * @author Groupe K5
+	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans le tableau de Face "faces"
+	 * pour lequel la valeur Y est la plus petite.
+	 * @return double max
+	 * */
+	public double getYMax(){
+		double max=faces[0].getYMax();
+		for (int i = 1 ; i < faces.length ; i++){
+			if (faces[i].getYMax()>max)
+				max = faces[i].getYMax();
+		}
+		return max;
+	}
+	
 	/*public Point barycentre() {
 	Point totalcentres= new Point(0.0,0.0,0.0);
 	for(int i=0; i<this.getFaces().length; i++) {
