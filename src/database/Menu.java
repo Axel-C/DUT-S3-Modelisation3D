@@ -32,7 +32,7 @@ import projetmode.Space;
  		getContentPane().add(panel, BorderLayout.CENTER);
  		
  		// CONTENU
- 		
+ 		Data.ouverture();
  		ArrayList<Fichier> fichiers = Data.getData();
  		String[] entete = new String[]{"Nom", "Points" , "Segments" , "Faces" };
  		Object[][] donnees = new String[fichiers.size()][4];
@@ -79,6 +79,18 @@ import projetmode.Space;
 			}
 		});
  		boutons.add(supprimer);
+ 		
+ 			// Ajouter
+ 		JButton ajouter = new JButton("Ajouter");
+ 		ajouter.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+ 		boutons.add(ajouter);
  		
  		setVisible(true);
  	}

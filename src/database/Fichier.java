@@ -4,7 +4,7 @@
  
  @SuppressWarnings("serial")
  public class Fichier{
- 	private int id ;
+ 	public int id ;
  	public String nom ; 
  	public String contenu ;
  	public int points ;
