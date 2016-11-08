@@ -22,30 +22,31 @@ public class Model {
 	}
 	
 	/*public Point barycentre() {
-		Point totalcentres= new Point(0.0,0.0,0.0);
-		for(int i=0; i<this.getFaces().length; i++) {
-			totalcentres.setX(this.getFaces()[i].barycentreFace().getX());
-			totalcentres.setY(this.getFaces()[i].barycentreFace().getY());
-			totalcentres.setZ(this.getFaces()[i].barycentreFace().getZ());
-		}
-		return totalcentres;
+	Point totalcentres= new Point(0.0,0.0,0.0);
+	for(int i=0; i<this.getFaces().length; i++) {
+		totalcentres.setX(this.getFaces()[i].barycentreFace().getX());
+		totalcentres.setY(this.getFaces()[i].barycentreFace().getY());
+		totalcentres.setZ(this.getFaces()[i].barycentreFace().getZ());
 	}
+	return totalcentres;
+}
+
+public Point barycentreFace() {
+	double x=0;
+	double y=0;
+	double z=0;
+	for (int i=0; i<points.length; i++) {
+		x= x+this.getPoints()[i].getX();
+		y= y+this.getPoints()[i].getY();
+		x= z+this.getPoints()[i].getZ();
+	}
+	x=x/points.length;
+	y=y/points.length;
+	z=z/points.length;
 	
-	public Point barycentreFace() {
-		double x=0;
-		double y=0;
-		double z=0;
-		for (int i=0; i<points.length; i++) {
-			x= x+this.getPoints()[i].getX();
-			y= y+this.getPoints()[i].getY();
-			x= z+this.getPoints()[i].getZ();
-		}
-		x=x/points.length;
-		y=y/points.length;
-		z=z/points.length;
-		
-		return new Point(x,y,z);
-	}*/
+	return new Point(x,y,z);
+}*/
+
 	
 	public Model(String contenu){
 		Point[] points;
