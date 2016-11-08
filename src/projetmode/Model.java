@@ -18,7 +18,44 @@ public class Model {
 
 	public Model(File plyFile) throws IOException {
 		constructFromPlyFile(plyFile);
-
+		
+	}
+	
+	public Model(String contenu){
+		Point[] points;
+		String ligne ;
+		String[] lignes = contenu.split("\n");
+		int i = 0 ;
+		while(!lignes[i].contains("element vertex") ){
+			i++ ;
+		}
+		points = new Point[(Integer.valueOf(lignes[i].split(" ")[2]))];
+		while(!lignes[i].contains("element face") ){
+			i++ ;
+		}
+		faces = new Face[(Integer.valueOf(lignes[i].split(" ")[2]))];
+		while (!lignes[i].equals("end_header")) {
+			i++ ;
+		}
+		i++ ;
+		Point cache ;
+		for(int j = 0 ; j < points.length ; j++){
+			System.out.println(points.length);
+			cache = new Point(Double.parseDouble(lignes[i].split(" ")[0]), Double.parseDouble(lignes[i].split(" ")[1]),Double.parseDouble(lignes[i].split(" ")[2]));
+			points[j] = cache ;
+			i++ ;
+		}
+		
+		for(int j = 1 ; j < faces.length ; j++){
+			Point[] pointsOfFace = new Point[Integer.parseInt(lignes[i].split(" ")[0])];
+			for (int k = 0; j < pointsOfFace.length; k++) {
+				pointsOfFace[k] = points[Integer.parseInt(lignes[i].split(" ")[k + 1])];
+			}
+			faces[j] = new Face(pointsOfFace);
+		}
+		
+		applyPaintersAlgorithm();
+		
 	}
 
 	public Face[] getFaces() {

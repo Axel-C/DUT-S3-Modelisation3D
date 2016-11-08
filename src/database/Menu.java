@@ -2,6 +2,7 @@
  package database;
  
  import java.awt.BorderLayout;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ import java.util.ArrayList;
  import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+
+import projetmode.Fenetre;
+import projetmode.Model;
+import projetmode.Space;
  
  public class Menu extends JFrame{
  	
@@ -58,7 +63,8 @@ import javax.swing.ListSelectionModel;
 				dispose();
 				Fichier f = fichiers.get(tableau.getSelectedRow()) ;
 				System.out.println("Ouverture de '" + f.nom + "'");
-				
+				System.out.println(f.contenu);
+				//new Fenetre(new Space(new Model(f.contenu), Space.SEGMENTS_AND_FACES));
 			}
 		});
  	 	boutons.add(ouvrir);

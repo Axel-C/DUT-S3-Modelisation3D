@@ -11,11 +11,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 @SuppressWarnings("serial")
-public class Frame extends JFrame implements KeyListener {
+public class Fenetre extends JFrame implements KeyListener {
 	private Space space;
 	private JMenuBar options;
 
-	public Frame(Space space) {
+	public Fenetre(Space space) {
 		super("Projet Modelisation");
 		setSize(900, 600);
 		this.space = space;
