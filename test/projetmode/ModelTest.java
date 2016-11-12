@@ -1,4 +1,5 @@
 package projetmode;
+
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -53,35 +54,28 @@ public class ModelTest {
 		assertFalse(ouvrable(plyFileText));
 	}
 
-	/* @Test
-	public void testVertex() {
-		try {
-			m = new Model(plyFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		for (int i = 0; i < plyVertex.length; i++) {
-			assertEquals(plyVertex[i].getX(), m.getVertices()[i].getX(), 0.1);
-			assertEquals(plyVertex[i].getY(), m.getVertices()[i].getY(), 0.1);
-			assertEquals(plyVertex[i].getZ(), m.getVertices()[i].getZ(), 0.1);
-		}
+	/*
+	 * @Test public void testVertex() { try { m = new Model(plyFile); } catch
+	 * (Exception e) { e.printStackTrace(); } for (int i = 0; i <
+	 * plyVertex.length; i++) { assertEquals(plyVertex[i].getX(),
+	 * m.getVertices()[i].getX(), 0.1); assertEquals(plyVertex[i].getY(),
+	 * m.getVertices()[i].getY(), 0.1); assertEquals(plyVertex[i].getZ(),
+	 * m.getVertices()[i].getZ(), 0.1); }
+	 * 
+	 * }
+	 */
 
-	} */
-
-	/* @Test
-	public void testFace() {
-		try {
-			m = new Model(plyFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		for (int i = 0; i < fa.length; i++) {
-			for (int j = 0; j < fa[i].getVertices().length; j++) {
-				assertEquals(fa[i].getVertices()[j].getX(), m.getFaces()[i].getVertices()[j].getX(), 0.1);
-				assertEquals(fa[i].getVertices()[j].getY(), m.getFaces()[i].getVertices()[j].getY(), 0.1);
-				assertEquals(fa[i].getVertices()[j].getZ(), m.getFaces()[i].getVertices()[j].getZ(), 0.1);
-			}
-		}
-
-	} */
+	/*
+	 * @Test public void testFace() { try { m = new Model(plyFile); } catch
+	 * (Exception e) { e.printStackTrace(); } for (int i = 0; i < fa.length;
+	 * i++) { for (int j = 0; j < fa[i].getVertices().length; j++) {
+	 * assertEquals(fa[i].getVertices()[j].getX(),
+	 * m.getFaces()[i].getVertices()[j].getX(), 0.1);
+	 * assertEquals(fa[i].getVertices()[j].getY(),
+	 * m.getFaces()[i].getVertices()[j].getY(), 0.1);
+	 * assertEquals(fa[i].getVertices()[j].getZ(),
+	 * m.getFaces()[i].getVertices()[j].getZ(), 0.1); } }
+	 * 
+	 * }
+	 */
 }

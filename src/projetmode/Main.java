@@ -1,7 +1,6 @@
 package projetmode;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) {
@@ -33,7 +32,7 @@ public class Main {
 					} else {
 						new Fenetre(new Space(new Model(file), Space.SEGMENTS_AND_FACES));
 					}
-				} catch (IOException e) {
+				} catch (Exception e) {
 					System.out.println("Le fichier PLY est incorrect.");
 				}
 			}

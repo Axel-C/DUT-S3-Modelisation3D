@@ -20,7 +20,7 @@ public class FaceTest {
 						10 + columnMatrix.getElement(2, 0)),
 				new Point(0 + columnMatrix.getElement(0, 0), 5 + columnMatrix.getElement(1, 0),
 						15 + columnMatrix.getElement(2, 0)) });
-		for(int i = 0; i < expectedFace.getPoints().length; i++) {
+		for (int i = 0; i < expectedFace.getPoints().length; i++) {
 			assertEquals(expectedFace.getPoints()[i].getX(), actualFace.getPoints()[i].getX(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getY(), actualFace.getPoints()[i].getY(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getZ(), actualFace.getPoints()[i].getZ(), 0.1);
@@ -39,7 +39,7 @@ public class FaceTest {
 						10 * columnMatrix.getElement(2, 0)),
 				new Point(0 * columnMatrix.getElement(0, 0), 5 * columnMatrix.getElement(1, 0),
 						15 * columnMatrix.getElement(2, 0)) });
-		for(int i = 0; i < expectedFace.getPoints().length; i++) {
+		for (int i = 0; i < expectedFace.getPoints().length; i++) {
 			assertEquals(expectedFace.getPoints()[i].getX(), actualFace.getPoints()[i].getX(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getY(), actualFace.getPoints()[i].getY(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getZ(), actualFace.getPoints()[i].getZ(), 0.1);
