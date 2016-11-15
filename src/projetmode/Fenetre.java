@@ -1,11 +1,17 @@
 package projetmode;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -14,19 +20,50 @@ import javax.swing.event.ChangeListener;
 public class Fenetre extends JFrame implements KeyListener {
 	private Space space;
 	private JMenuBar options;
+	private JPanel globalContainer;
+	private JPanel buttons;
 
 	public Fenetre(Space space) {
 		super("Projet Modelisation");
 		setSize(900, 600);
+		globalContainer = new JPanel(new BorderLayout());
 		this.space = space;
-		setContentPane(space);
-		// initializeOptions();
-		// setJMenuBar(options);
+		globalContainer.add(space, BorderLayout.CENTER);
+		initializeButtons();
+		globalContainer.add(buttons, BorderLayout.NORTH);
+		super.setContentPane(globalContainer);
 		super.addKeyListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
+	private void initializeButtons() {
+		// TODO
+		buttons = new JPanel(new GridLayout(1, 1, 5, 5));
+		JPanel scalingButtons = new JPanel(new GridLayout(2, 1));
+		JButton zoomButton = new JButton("+");
+		zoomButton.setFocusable(false);
+		JButton dezoomButton = new JButton("-");
+		dezoomButton.setFocusable(false);
+		zoomButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.scaleModel(new Matrix(new double[][] { { 1.05 }, { 1.05 }, { 1.05 }, { 1 } }));
+				space.repaint();
+			}
+		});
+		dezoomButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.scaleModel(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
+				space.repaint();
+			}
+		});
+		scalingButtons.add(zoomButton);
+		scalingButtons.add(dezoomButton);
+		buttons.add(scalingButtons);
+	}
+	
 	@SuppressWarnings("unused")
 	private void initializeOptions() {
 		// TODO
@@ -123,12 +160,6 @@ public class Fenetre extends JFrame implements KeyListener {
 			space.adjustModel();
 			space.repaint();
 			break;
-		case KeyEvent.VK_T:
-			space.adjustTranslating();
-			space.repaint();
-		case KeyEvent.VK_G:
-			space.adjustScaling();
-			space.repaint();
 		}
 		// System.out.println(space.getModel().getFaces()[0]);
 	}
