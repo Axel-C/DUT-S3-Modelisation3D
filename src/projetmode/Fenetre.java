@@ -123,6 +123,12 @@ public class Fenetre extends JFrame implements KeyListener {
 			space.adjustModel();
 			space.repaint();
 			break;
+		case KeyEvent.VK_T:
+			space.adjustTranslating();
+			space.repaint();
+		case KeyEvent.VK_G:
+			space.adjustScaling();
+			space.repaint();
 		}
 		// System.out.println(space.getModel().getFaces()[0]);
 	}

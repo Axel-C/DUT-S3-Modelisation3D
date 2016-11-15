@@ -1,7 +1,7 @@
 package projetmode;
 
 /**
- * Cette classes représente un point 3D ayant pour coordonnées X,Y et Z.
+ * Cette classes reprï¿½sente un point 3D ayant pour coordonnï¿½es X,Y et Z.
  *
  * @author Groupe K5
  */
@@ -9,15 +9,15 @@ public class Point {
 	private double x, y, z;
 
 	/**
-	 * Instancie un point à partir des coordonnées X,Y et Z passés en
-	 * paramètres.
+	 * Instancie un point ï¿½ partir des coordonnï¿½es X,Y et Z passï¿½s en
+	 * paramï¿½tres.
 	 * 
 	 * @param x
-	 *            La coordonnée X.
+	 *            La coordonnï¿½e X.
 	 * @param y
-	 *            La coordonnée Y.
+	 *            La coordonnï¿½e Y.
 	 * @param z
-	 *            La coordonnée Z.
+	 *            La coordonnï¿½e Z.
 	 */
 	public Point(double x, double y, double z) {
 		this.x = x;
@@ -26,28 +26,28 @@ public class Point {
 	}
 
 	/**
-	 * @return La coordonnée X de ce point.
+	 * @return La coordonnï¿½e X de ce point.
 	 */
 	public double getX() {
 		return x;
 	}
 
 	/**
-	 * @return La coordonnée Y de ce point.
+	 * @return La coordonnï¿½e Y de ce point.
 	 */
 	public double getY() {
 		return y;
 	}
 
 	/**
-	 * @return La coordonnée Z de ce point.
+	 * @return La coordonnï¿½e Z de ce point.
 	 */
 	public double getZ() {
 		return z;
 	}
 
 	/**
-	 * Translate ce point sur la matrice colonne passée en paramètre.
+	 * Translate ce point sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne sur laquelle ce point translatera.
@@ -67,10 +67,10 @@ public class Point {
 	}
 
 	/**
-	 * Change l'échelle de ce point sur la matrice colonne passée en paramètre.
+	 * Change l'ï¿½chelle de ce point sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
-	 *            La matrice colonne sur laquelle ce point changera d'échelle.
+	 *            La matrice colonne sur laquelle ce point changera d'ï¿½chelle.
 	 */
 	public void scale(Matrix columnMatrix) {
 		/*
@@ -87,14 +87,14 @@ public class Point {
 	}
 
 	/**
-	 * Fait tourner le point autour de l'axe d'un angle en degrés passés en
-	 * paramètres.
+	 * Fait tourner le point autour de l'axe d'un angle en degrï¿½s passï¿½s en
+	 * paramï¿½tres.
 	 * 
 	 * @param axis
 	 *            L'axe autour duquel le point tournera.
 	 * @param angleInDegrees
-	 *            L'angle en degrés de rotation autour de l'axe passé en
-	 *            paramètre.
+	 *            L'angle en degrï¿½s de rotation autour de l'axe passï¿½ en
+	 *            paramï¿½tre.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		Matrix columnMatrixProduct = Matrix.getMatrixProduct(Matrix.getRotationMatrix(axis, angleInDegrees),

@@ -35,12 +35,30 @@ public class Space extends JPanel {
 	}
 
 	public void rotateModel(Axis axis, double angleInDegrees) {
+		//placer le centre de la figure en 0,0,0 pour appliquer la rotation
+		Point center = model.getCenter();
+		if (axis==Axis.X) {
+			model.translate(new Matrix(new double[][]{{0},{-center.getY()},{-center.getZ()}}));
+		} else if (axis==Axis.Y) {
+			model.translate(new Matrix(new double[][]{{-center.getX()},{0},{-center.getZ()}}));
+		} else {
+			model.translate(new Matrix(new double[][]{{-center.getX()},{-center.getY()},{0}}));
+		}
 		model.rotate(axis, angleInDegrees);
+		// Replacer la figure dans sa position d'origine.
+		if (axis==Axis.X) {
+			model.translate(new Matrix(new double[][]{{0},{center.getY()},{center.getZ()}}));
+		} else if (axis==Axis.Y) {
+			model.translate(new Matrix(new double[][]{{center.getX()},{0},{center.getZ()}}));
+		} else {
+			model.translate(new Matrix(new double[][]{{center.getX()},{center.getY()},{0}}));
+		}
+			
 	}
 
 	/**
-	 * Ajuste le modele, sa taille est recalculée suivant la taille de la frame
-	 * qui la contient, et le modele est replacé au centre de la frame.
+	 * Ajuste le modele, sa taille est recalculï¿½e suivant la taille de la frame
+	 * qui la contient, et le modele est replacï¿½ au centre de la frame.
 	 */
 	public void adjustModel() {
 		adjustScaling();
@@ -48,12 +66,12 @@ public class Space extends JPanel {
 	}
 
 	/**
-	 * Ajuste le modele, sa taille est recalculée suivant la taille de la frame
+	 * Ajuste le modele, sa taille est recalculï¿½e suivant la taille de la frame
 	 * qui la contient,
 	 */
-	private void adjustScaling() {
-		int maxWidth = super.getWidth();
-		int maxHeight = super.getHeight();
+	public void adjustScaling() {
+		int maxWidth = super.getWidth()-100;
+		int maxHeight = super.getHeight()-100;
 		// System.out.println("width : "+maxWidth+" ,Height : "+maxHeight);
 		double range = model.getXMax() - model.getXMin();
 		// System.out.println("range : "+range+" r : "+(maxWidth/range));
@@ -68,7 +86,7 @@ public class Space extends JPanel {
 	/**
 	 * Ajuste le modele en le replacant au centre de la frame.
 	 */
-	private void adjustTranslating() {
+	public void adjustTranslating() {
 		int maxWidth = super.getWidth();
 		int maxHeight = super.getHeight();
 		double Xmax = model.getXMax(), Ymax = model.getYMax();
