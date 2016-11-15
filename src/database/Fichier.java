@@ -1,13 +1,17 @@
 package database;
 
+import java.awt.GridLayout;
 import java.sql.Date;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Fichier {
 	public int id;
 	public String nom;
 	public Date date ;
-	public String tags ;
+	public String[] tags ;
 	public String path ;
 	public int points;
 	public int segments;
@@ -17,7 +21,7 @@ public class Fichier {
 		this.id = id;
 		this.nom = nom;
 		//this.date = date ;
-		this.tags = tags ;
+		this.tags = tags.split(" ") ;
 		this.path = path ;
 		this.points = points;
 		this.segments = segments;
@@ -28,7 +32,24 @@ public class Fichier {
 
 
 	public String toString() {
-		return "[" + id + " , " + nom + " , " + " , " +tags + + points + " , " + segments + " , " + faces + "]";
+		String retour = "[" + id + " , " + nom + "\n , " + " , "  ;
+				for(int i = 0 ; i < tags.length ; i++){
+					retour += tags[i] + " " ;
+				}
+		retour+=  points + " , " + segments + " , " + faces + "]";
+		return retour ;
+	}
+	
+	public JPanel panel(){
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(6, 2));
+		panel.add(new JLabel("id"));
+		panel.add(new JLabel("" + id));
+		panel.add(new JLabel("nom"));
+		panel.add(new JLabel(nom));
+		
+				
+		return panel ;
 	}
 
 }
