@@ -16,6 +16,7 @@ import java.util.HashSet;
  */
 public class Model {
 	private Face[] faces;
+	private Point[] points;
 
 	/**
 	 * Instancie un mod�le 3D � partir d'un tableau de faces pass� en param�tre.
@@ -25,6 +26,8 @@ public class Model {
 	 */
 	public Model(Face[] faces) {
 		this.faces = faces;
+		
+		
 	}
 
 	/**
@@ -118,22 +121,20 @@ public class Model {
 		return min;
 	}
 
-	/*
-	 * public Point barycentre() { Point totalcentres= new Point(0.0,0.0,0.0);
-	 * for(int i=0; i<this.getFaces().length; i++) {
-	 * totalcentres.setX(this.getFaces()[i].barycentreFace().getX());
-	 * totalcentres.setY(this.getFaces()[i].barycentreFace().getY());
-	 * totalcentres.setZ(this.getFaces()[i].barycentreFace().getZ()); } return
-	 * totalcentres; }
-	 * 
-	 * public Point barycentreFace() { double x=0; double y=0; double z=0; for
-	 * (int i=0; i<points.length; i++) { x= x+this.getPoints()[i].getX(); y=
-	 * y+this.getPoints()[i].getY(); x= z+this.getPoints()[i].getZ(); }
-	 * x=x/points.length; y=y/points.length; z=z/points.length;
-	 * 
-	 * return new Point(x,y,z); }
-	 */
-
+	public Point barycentre() {
+		Point centre = new Point(0.0,0.0,0.0);
+		for(int i=0; i<this.getPoints().length; i++) {
+			centre.setX(centre.getX()+this.getPoints()[i].getX());
+			centre.setX(centre.getX()+this.getPoints()[i].getY());
+			centre.setX(centre.getZ()+this.getPoints()[i].getZ());
+		}
+		centre.setX(centre.getX()/this.getPoints().length);
+		centre.setY(centre.getY()/this.getPoints().length);
+		centre.setZ(centre.getZ()/this.getPoints().length);
+		return centre;
+		
+	}
+	
 	public Model(String contenu) {
 		Point[] points;
 		String[] lignes = contenu.split("\n");
@@ -173,6 +174,10 @@ public class Model {
 
 	public Face[] getFaces() {
 		return faces;
+	}
+	
+	public Point[] getPoints() {
+		return points;
 	}
 
 	/**
