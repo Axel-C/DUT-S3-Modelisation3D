@@ -22,24 +22,38 @@ public class Data {
 		// OUVERTURE BASE DE DONNEE
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:test.db");
+			c = DriverManager.getConnection("jdbc:sqlite:data/modeles.db");
 			System.out.println("Ouverture de la base reussie");
 		} catch (SQLException | ClassNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Base de donnÃ©e introuvable");
+			JOptionPane.showMessageDialog(null, "Base de donnee introuvable");
 			return false;
 		}
 		return true;
 
 	}
+	/**
+	 * Ferme la connection avec la base de donnee
+	 * @throws SQLException
+	 */
+	public static void fermeture() {
 
-	public static void fermeture() throws SQLException {
-
-		stmt.close();
-		c.close();
+		try {
+			stmt.close();
+			c.close();
+			System.out.println("Fermeture de la base");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
-
-	public static ArrayList<Fichier> getData() {
+	/**
+	 * Récupère les fichiers contenu dans la base de donnee
+	 * @return	Liste des fichiers
+	 */
+	public static ArrayList<Fichier> list() {
 		ArrayList<Fichier> fichiers = new ArrayList<>();
+		ouverture();
 		try {
 
 			// REQUETE
@@ -51,9 +65,11 @@ public class Data {
 			// STOCKAGE
 
 			while (rs.next()) {
-				fichiers.add(new Fichier(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getInt(6)));
+				fichiers.add(new Fichier(rs.getInt(1), rs.getString(2), 
+						rs.getDate(3), rs.getString(4), rs.getString(5), 
+						rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 			}
+			
 
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -63,21 +79,34 @@ public class Data {
 		// RETOUR
 
 		System.out.println("Donne recuperee");
+		fermeture(); 
 		return fichiers;
 
 	}
-
-	public static boolean deleteData(int id) {
+	/**
+	 * Supprime un fichier de la base donnee 
+	 * @param id du fichier a supprimer 
+	 * @return	reussite ou non de l'operation 
+	 */
+	public static boolean delete(int id) {
 		try {
 			stmt = c.createStatement();
 			String querry = "DELETE FROM Files WHERE id = '" + id + "'";
 			stmt.executeUpdate(querry);
+			return true ;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 
-		return false;
+		
 	}
+	
+	public static boolean add(){
+		return false ;
+	}
+	
+	
 
 }
