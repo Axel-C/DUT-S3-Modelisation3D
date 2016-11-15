@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 
 /**
- * Cette classe représente un modéle 3D composé de plusieurs faces.
+ * Cette classe reprï¿½sente un modï¿½le 3D composï¿½ de plusieurs faces.
  * 
  * @author Groupe K5
  *
@@ -18,7 +18,7 @@ public class Model {
 	private Face[] faces;
 
 	/**
-	 * Instancie un modéle 3D à partir d'un tableau de faces passé en paramètre.
+	 * Instancie un modï¿½le 3D ï¿½ partir d'un tableau de faces passï¿½ en paramï¿½tre.
 	 * 
 	 * @param faces
 	 *            Le tableau de faces.
@@ -28,7 +28,7 @@ public class Model {
 	}
 
 	/**
-	 * Instancie un modéle 3D à partir d'un fichier PLY passé en paramètre.
+	 * Instancie un modï¿½le 3D ï¿½ partir d'un fichier PLY passï¿½ en paramï¿½tre.
 	 * 
 	 * @param plyFile
 	 *            Le fichier PLY.
@@ -44,7 +44,7 @@ public class Model {
 	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur X est la plus petite.
 	 * 
-	 * @return Le plus petit X des faces de ce modéle.
+	 * @return Le plus petit X des faces de ce modï¿½le.
 	 */
 	public double getXMin() {
 		double min = faces[0].getXMin();
@@ -59,7 +59,7 @@ public class Model {
 	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur X est la plus grande.
 	 * 
-	 * @return Le plus grand X des faces de ce modéle.
+	 * @return Le plus grand X des faces de ce modï¿½le.
 	 */
 	public double getXMax() {
 		double max = faces[0].getXMax();
@@ -74,7 +74,7 @@ public class Model {
 	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur Y est la plus petite.
 	 * 
-	 * @return Le plus petit Y des faces de ce modéle.
+	 * @return Le plus petit Y des faces de ce modï¿½le.
 	 */
 	public double getYMin() {
 		double min = faces[0].getYMin();
@@ -89,7 +89,7 @@ public class Model {
 	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur Y est la plus petite.
 	 * 
-	 * @return Le plus grand Y des faces de ce modéle.
+	 * @return Le plus grand Y des faces de ce modï¿½le.
 	 */
 	public double getYMax() {
 		double max = faces[0].getYMax();
@@ -98,6 +98,24 @@ public class Model {
 				max = faces[i].getYMax();
 		}
 		return max;
+	}
+	
+	public double getZMax() {
+		double max = faces[0].getZMax();
+		for (int i = 1; i < faces.length; i++) {
+			if (faces[i].getZMax() > max)
+				max = faces[i].getZMax();
+		}
+		return max;
+	}
+	
+	public double getZMin() {
+		double min = faces[0].getZMin();
+		for (int i = 1; i < faces.length; i++) {
+			if (faces[i].getZMin() < min)
+				min = faces[i].getZMin();
+		}
+		return min;
 	}
 
 	/*
@@ -158,8 +176,8 @@ public class Model {
 	}
 
 	/**
-	 * @author Groupe K5 Applique l'algorithme du peintre à ce modéle, cet
-	 *         algorithme à pour but d'améliorer l'impression de 3D en peignant
+	 * @author Groupe K5 Applique l'algorithme du peintre ï¿½ ce modï¿½le, cet
+	 *         algorithme ï¿½ pour but d'amï¿½liorer l'impression de 3D en peignant
 	 *         les faces dans le bon ordre.
 	 */
 	public void applyPaintersAlgorithm() {
@@ -178,7 +196,7 @@ public class Model {
 	}
 
 	/**
-	 * Construit le modéle à partir d'un fichier PLY passé en paramètre.
+	 * Construit le modï¿½le ï¿½ partir d'un fichier PLY passï¿½ en paramï¿½tre.
 	 * 
 	 * @param plyFile
 	 *            Le fichier PLY
@@ -219,7 +237,7 @@ public class Model {
 	}
 
 	/**
-	 * Translate le modéle sur la matrice colonne passée en paramètre.
+	 * Translate le modï¿½le sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne.
@@ -237,7 +255,7 @@ public class Model {
 	}
 
 	/**
-	 * Change l'échelle du modéle sur la matrice colonne passée en paramètre.
+	 * Change l'ï¿½chelle du modï¿½le sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne.
@@ -255,13 +273,13 @@ public class Model {
 	}
 
 	/**
-	 * Fait tourner le modéle autour de l'axe et d'un angle en degrés passés en
-	 * paramètres.
+	 * Fait tourner le modï¿½le autour de l'axe et d'un angle en degrï¿½s passï¿½s en
+	 * paramï¿½tres.
 	 * 
 	 * @param axis
 	 *            L'axe.
 	 * @param angleInDegrees
-	 *            L'angle en degrés.
+	 *            L'angle en degrï¿½s.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		HashSet<Point> rotatedPoints = new HashSet<>();
@@ -273,6 +291,12 @@ public class Model {
 				}
 			}
 		}
+	}
+	
+	public Point getCenter(){
+		 double XMax=getXMax(),YMax=getYMax(),ZMax=getZMax();
+		 double XMin=getXMin(),YMin=getYMin(),ZMin=getZMin();
+		 return new Point(XMin+(XMax-XMin)/2,YMin+(YMax-YMin)/2,ZMin+(ZMax-ZMin)/2);
 	}
 
 	public String toString() {

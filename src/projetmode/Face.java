@@ -1,7 +1,7 @@
 package projetmode;
 
 /**
- * Cette classe représente une face 3D composée de plusieurs points.
+ * Cette classe reprï¿½sente une face 3D composï¿½e de plusieurs points.
  * 
  * @author Groupe K5
  *
@@ -10,7 +10,7 @@ public class Face {
 	private Point[] points;
 
 	/**
-	 * Instancie une face à partir d'un tableau de points passé en paramètre.
+	 * Instancie une face ï¿½ partir d'un tableau de points passï¿½ en paramï¿½tre.
 	 * 
 	 * @param points
 	 *            Le tableau de points.
@@ -27,7 +27,7 @@ public class Face {
 	}
 
 	/**
-	 * Translate cette face sur la matrice colonne passée en paramètre.
+	 * Translate cette face sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne sur laquelle cette face translatera.
@@ -39,10 +39,10 @@ public class Face {
 	}
 
 	/**
-	 * Change l'échelle cette face sur la matrice colonne passée en paramètre.
+	 * Change l'ï¿½chelle cette face sur la matrice colonne passï¿½e en paramï¿½tre.
 	 * 
 	 * @param columnMatrix
-	 *            La matrice colonne sur laquelle cette face changera d'échelle.
+	 *            La matrice colonne sur laquelle cette face changera d'ï¿½chelle.
 	 */
 	public void scale(Matrix columnMatrix) {
 		for (int i = 0; i < points.length; i++) {
@@ -51,13 +51,13 @@ public class Face {
 	}
 
 	/**
-	 * Fait tourner cette face autour de l'axe d'un angle en degrés passés en
-	 * paramètres.
+	 * Fait tourner cette face autour de l'axe d'un angle en degrï¿½s passï¿½s en
+	 * paramï¿½tres.
 	 * 
 	 * @param axis
 	 *            L'axe autour duquel la face tournera.
 	 * @param angleInDegrees
-	 *            L'angle degrés de rotation autour de l'axe passé en paramètre.
+	 *            L'angle degrï¿½s de rotation autour de l'axe passï¿½ en paramï¿½tre.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		for (int i = 0; i < points.length; i++) {
@@ -140,7 +140,25 @@ public class Face {
 		}
 		return max;
 	}
+	
+	public double getZMin() {
+		double min = points[0].getZ();
+		for (int i = 1; i < points.length; i++) {
+			if (points[i].getZ() < min)
+				min = points[i].getZ();
+		}
+		return min;
+	}
 
+	public double getZMax() {
+		double max = points[0].getZ();
+		for (int i = 1; i < points.length; i++) {
+			if (points[i].getZ() > max)
+				max = points[i].getZ();
+		}
+		return max;
+	}
+	
 	@Override
 	public String toString() {
 		String string = "{" + points[0];
