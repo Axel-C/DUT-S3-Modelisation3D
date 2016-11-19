@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -38,8 +39,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	}
 
 	private void initializeButtons() {
-		// TODO
-		buttons = new JPanel(new GridLayout(1, 1, 5, 5));
+		buttons = new JPanel(new GridLayout(1, 2, 5, 5));
+		// Boutons de changement d'échelle
 		JPanel scalingButtons = new JPanel(new GridLayout(2, 1));
 		JButton zoomButton = new JButton("+");
 		zoomButton.setFocusable(false);
@@ -62,6 +63,55 @@ public class Fenetre extends JFrame implements KeyListener {
 		scalingButtons.add(zoomButton);
 		scalingButtons.add(dezoomButton);
 		buttons.add(scalingButtons);
+		// Boutons de translation
+		JPanel translatingButtons = new JPanel(new BorderLayout());
+		JButton upTranslationButton = new JButton("HAUT");
+		upTranslationButton.setFocusable(false);
+		upTranslationButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.translateModel(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
+				space.repaint();				
+			}
+			
+		});
+		translatingButtons.add(upTranslationButton, BorderLayout.NORTH);
+		JButton downTranslationButton = new JButton("BAS");
+		downTranslationButton.setFocusable(false);
+		downTranslationButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.translateModel(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
+				space.repaint();				
+			}
+			
+		});
+		translatingButtons.add(downTranslationButton, BorderLayout.SOUTH);
+		JButton leftTranslationButton = new JButton("GAUCHE");
+		leftTranslationButton.setFocusable(false);
+		leftTranslationButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.translateModel(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
+				space.repaint();				
+			}
+			
+		});
+		translatingButtons.add(leftTranslationButton, BorderLayout.WEST);
+		JButton rightTranslationButton = new JButton("DROITE");
+		rightTranslationButton.setFocusable(false);
+		rightTranslationButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
+				space.repaint();				
+			}
+			
+		});
+		translatingButtons.add(rightTranslationButton, BorderLayout.EAST);
+
+		buttons.add(translatingButtons);
+		
 	}
 	
 	@SuppressWarnings("unused")
