@@ -39,7 +39,7 @@ public class Fenetre extends JFrame implements KeyListener {
 	}
 
 	private void initializeButtons() {
-		buttons = new JPanel(new GridLayout(1, 2, 5, 5));
+		buttons = new JPanel(new GridLayout(1, 2, 2, 2));
 		// Boutons de changement d'échelle
 		JPanel scalingButtons = new JPanel(new GridLayout(2, 1));
 		JButton zoomButton = new JButton("+");
@@ -63,8 +63,8 @@ public class Fenetre extends JFrame implements KeyListener {
 		scalingButtons.add(zoomButton);
 		scalingButtons.add(dezoomButton);
 		buttons.add(scalingButtons);
-		// Boutons de translation
-		JPanel translatingButtons = new JPanel(new BorderLayout());
+		// Boutons de translation et bouton d'ajustement
+		JPanel translationButtons = new JPanel(new BorderLayout());
 		JButton upTranslationButton = new JButton("HAUT");
 		upTranslationButton.setFocusable(false);
 		upTranslationButton.addActionListener(new ActionListener() {
@@ -75,7 +75,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 			
 		});
-		translatingButtons.add(upTranslationButton, BorderLayout.NORTH);
+		translationButtons.add(upTranslationButton, BorderLayout.NORTH);
 		JButton downTranslationButton = new JButton("BAS");
 		downTranslationButton.setFocusable(false);
 		downTranslationButton.addActionListener(new ActionListener() {
@@ -86,7 +86,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 			
 		});
-		translatingButtons.add(downTranslationButton, BorderLayout.SOUTH);
+		translationButtons.add(downTranslationButton, BorderLayout.SOUTH);
 		JButton leftTranslationButton = new JButton("GAUCHE");
 		leftTranslationButton.setFocusable(false);
 		leftTranslationButton.addActionListener(new ActionListener() {
@@ -97,7 +97,7 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 			
 		});
-		translatingButtons.add(leftTranslationButton, BorderLayout.WEST);
+		translationButtons.add(leftTranslationButton, BorderLayout.WEST);
 		JButton rightTranslationButton = new JButton("DROITE");
 		rightTranslationButton.setFocusable(false);
 		rightTranslationButton.addActionListener(new ActionListener() {
@@ -108,9 +108,19 @@ public class Fenetre extends JFrame implements KeyListener {
 			}
 			
 		});
-		translatingButtons.add(rightTranslationButton, BorderLayout.EAST);
+		translationButtons.add(rightTranslationButton, BorderLayout.EAST);
+		JButton adjustementButton = new JButton("AJUSTER");
+		adjustementButton.setFocusable(false);
+		adjustementButton.addActionListener(new ActionListener() {
 
-		buttons.add(translatingButtons);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.adjustModel();
+				space.repaint();
+			}
+		});
+		translationButtons.add(adjustementButton, BorderLayout.CENTER); 
+		buttons.add(translationButtons);
 		
 	}
 	
