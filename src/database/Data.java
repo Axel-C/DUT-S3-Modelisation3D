@@ -107,6 +107,21 @@ public class Data {
 		return false ;
 	}
 	
+	public static boolean delete(String name) {
+		try {
+			ouverture();
+			stmt = c.createStatement();
+			String querry = "DELETE FROM Files WHERE nom = '" + name + "'";
+			int r = stmt.executeUpdate(querry);
+			fermeture();
+			return (r == 1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false ;
+		}
+		
+		
+	}
 	
 
 }

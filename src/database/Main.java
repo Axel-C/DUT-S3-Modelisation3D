@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		fichiers = Data.list();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		find("rogedddd");
+		add();
 
 	}
 	
@@ -64,13 +64,26 @@ public class Main {
 			frame.add(f.panel());
 		}
 		if(list.isEmpty()){
-			JOptionPane.showMessageDialog(null, "Aucun résultat trouvé");
+			JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
 		}else{
 		
 		frame.setSize(800, 800);
 		frame.setVisible(true);
 		}
 		
+	}
+	
+	public static void delete(String name){
+		boolean retour = Data.delete(name);
+		if(retour){
+			System.out.println("Suppression reussie");
+		}else{
+			System.out.println("Fichier introuvable dans la base de donnee");
+		}
+	}
+	
+	public static void add(){
+		new Menu();
 	}
 
 }
