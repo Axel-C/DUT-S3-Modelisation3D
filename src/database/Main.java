@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		fichiers = Data.list();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		add();
+		all();
 
 	}
 	

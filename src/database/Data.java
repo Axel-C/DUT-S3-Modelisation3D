@@ -66,7 +66,7 @@ public class Data {
 
 			while (rs.next()) {
 				fichiers.add(new Fichier(rs.getInt(1), rs.getString(2), 
-						rs.getDate(3), rs.getString(4), rs.getString(5), 
+						rs.getString(3), rs.getString(4), rs.getString(5), 
 						rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 			}
 			
@@ -103,8 +103,20 @@ public class Data {
 		
 	}
 	
-	public static boolean add(){
-		return false ;
+	public static boolean add(String nom , String tags , String path){
+		try {
+			ouverture();
+			stmt = c.createStatement();
+			String querry = "INSERT INTO Files(nom , tags , path) VALUES('"+ nom +"','"+tags+"','"+path+"') ";
+			System.out.println(querry);
+			stmt.executeUpdate(querry);
+			fermeture();
+			return true ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public static boolean delete(String name) {

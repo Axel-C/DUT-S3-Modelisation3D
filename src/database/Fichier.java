@@ -10,14 +10,14 @@ import javax.swing.JPanel;
 public class Fichier {
 	public int id;
 	public String nom;
-	public Date date ;
+	public String date ;
 	public String[] tags ;
 	public String path ;
 	public int points;
 	public int segments;
 	public int faces;
 
-	public Fichier(int id, String nom,Date date ,String tags,String path , int points, int segments, int faces) {
+	public Fichier(int id, String nom,String date ,String tags,String path , int points, int segments, int faces) {
 		this.id = id;
 		this.nom = nom;
 		//this.date = date ;

@@ -2,6 +2,8 @@ package database;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -41,6 +43,16 @@ public class Menu extends JFrame {
 		
 		if(action == AJOUTER){
 			JButton ajouter = new JButton("Ajouter");
+			ajouter.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Data.add(nom.getText(), tags.getText(), path.getText());
+					Menu.this.dispose();
+					
+				}
+			});
+			add(ajouter);
 		}else{
 			
 		}
@@ -49,7 +61,7 @@ public class Menu extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(400, 600);
+		setSize(500, 250);
 		setVisible(true);
 	}
 	
