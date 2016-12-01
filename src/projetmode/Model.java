@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 
 /**
- * Cette classe repr�sente un mod�le 3D compos� de plusieurs faces.
+ * Cette classe represente un modele 3D compose de plusieurs faces.
  * 
  * @author Groupe K5
  *
@@ -19,7 +19,7 @@ public class Model {
 	private Point[] points;
 
 	/**
-	 * Instancie un mod�le 3D � partir d'un tableau de faces pass� en param�tre.
+	 * Instancie un modele 3D a partir d'un tableau de faces passe en parametre.
 	 * 
 	 * @param faces
 	 *            Le tableau de faces.
@@ -31,7 +31,7 @@ public class Model {
 	}
 
 	/**
-	 * Instancie un mod�le 3D � partir d'un fichier PLY pass� en param�tre.
+	 * Instancie un modele 3D a partir d'un fichier PLY passe en parametre.
 	 * 
 	 * @param plyFile
 	 *            Le fichier PLY.
@@ -47,7 +47,7 @@ public class Model {
 	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur X est la plus petite.
 	 * 
-	 * @return Le plus petit X des faces de ce mod�le.
+	 * @return Le plus petit X des faces de ce modele.
 	 */
 	public double getXMin() {
 		double min = faces[0].getXMin();
@@ -62,7 +62,7 @@ public class Model {
 	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur X est la plus grande.
 	 * 
-	 * @return Le plus grand X des faces de ce mod�le.
+	 * @return Le plus grand X des faces de ce modele.
 	 */
 	public double getXMax() {
 		double max = faces[0].getXMax();
@@ -77,7 +77,7 @@ public class Model {
 	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur Y est la plus petite.
 	 * 
-	 * @return Le plus petit Y des faces de ce mod�le.
+	 * @return Le plus petit Y des faces de ce modele.
 	 */
 	public double getYMin() {
 		double min = faces[0].getYMin();
@@ -92,7 +92,7 @@ public class Model {
 	 * Renvoie la valeur Y du point (parmi les points d'une face) contenu dans
 	 * le tableau de Face "faces" pour lequel la valeur Y est la plus petite.
 	 * 
-	 * @return Le plus grand Y des faces de ce mod�le.
+	 * @return Le plus grand Y des faces de ce modele.
 	 */
 	public double getYMax() {
 		double max = faces[0].getYMax();
@@ -181,8 +181,8 @@ public class Model {
 	}
 
 	/**
-	 * @author Groupe K5 Applique l'algorithme du peintre � ce mod�le, cet
-	 *         algorithme � pour but d'am�liorer l'impression de 3D en peignant
+	 * @author Groupe K5 Applique l'algorithme du peintre a ce modele, cet
+	 *         algorithme a pour but d'ameliorer l'impression de 3D en peignant
 	 *         les faces dans le bon ordre.
 	 */
 	public void applyPaintersAlgorithm() {
@@ -201,7 +201,7 @@ public class Model {
 	}
 
 	/**
-	 * Construit le mod�le � partir d'un fichier PLY pass� en param�tre.
+	 * Construit le modele a partir d'un fichier PLY passe en parametre.
 	 * 
 	 * @param plyFile
 	 *            Le fichier PLY
@@ -242,7 +242,7 @@ public class Model {
 	}
 
 	/**
-	 * Translate le mod�le sur la matrice colonne pass�e en param�tre.
+	 * Translate le modele sur la matrice colonne passee en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne.
@@ -260,7 +260,7 @@ public class Model {
 	}
 
 	/**
-	 * Change l'�chelle du mod�le sur la matrice colonne pass�e en param�tre.
+	 * Change l'echelle du modele sur la matrice colonne passee en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne.
@@ -278,13 +278,13 @@ public class Model {
 	}
 
 	/**
-	 * Fait tourner le mod�le autour de l'axe et d'un angle en degr�s pass�s en
-	 * param�tres.
+	 * Fait tourner le modele autour de l'axe et d'un angle en degres passes en
+	 * parametres.
 	 * 
 	 * @param axis
 	 *            L'axe.
 	 * @param angleInDegrees
-	 *            L'angle en degr�s.
+	 *            L'angle en degres.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		HashSet<Point> rotatedPoints = new HashSet<>();

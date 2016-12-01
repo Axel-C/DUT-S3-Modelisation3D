@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -39,8 +38,8 @@ public class Fenetre extends JFrame implements KeyListener {
 	}
 
 	private void initializeButtons() {
-		buttons = new JPanel(new GridLayout(1, 2, 2, 2));
-		// Boutons de changement d'�chelle
+		buttons = new JPanel(new GridLayout(1, 3, 2, 2));
+		// Boutons de changement d'�chelle
 		JPanel scalingButtons = new JPanel(new GridLayout(2, 1));
 		JButton zoomButton = new JButton("+");
 		zoomButton.setFocusable(false);
@@ -65,48 +64,48 @@ public class Fenetre extends JFrame implements KeyListener {
 		buttons.add(scalingButtons);
 		// Boutons de translation et bouton d'ajustement
 		JPanel translationButtons = new JPanel(new BorderLayout());
-		JButton upTranslationButton = new JButton("HAUT");
+		JButton upTranslationButton = new JButton("⇧");
 		upTranslationButton.setFocusable(false);
 		upTranslationButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				space.translateModel(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
-				space.repaint();				
+				space.repaint();
 			}
-			
+
 		});
 		translationButtons.add(upTranslationButton, BorderLayout.NORTH);
-		JButton downTranslationButton = new JButton("BAS");
+		JButton downTranslationButton = new JButton("⇩");
 		downTranslationButton.setFocusable(false);
 		downTranslationButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				space.translateModel(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
-				space.repaint();				
+				space.repaint();
 			}
-			
+
 		});
 		translationButtons.add(downTranslationButton, BorderLayout.SOUTH);
-		JButton leftTranslationButton = new JButton("GAUCHE");
+		JButton leftTranslationButton = new JButton("⇦");
 		leftTranslationButton.setFocusable(false);
 		leftTranslationButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				space.translateModel(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();				
+				space.repaint();
 			}
-			
+
 		});
 		translationButtons.add(leftTranslationButton, BorderLayout.WEST);
-		JButton rightTranslationButton = new JButton("DROITE");
+		JButton rightTranslationButton = new JButton("⇨");
 		rightTranslationButton.setFocusable(false);
 		rightTranslationButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();				
+				space.repaint();
 			}
-			
+
 		});
 		translationButtons.add(rightTranslationButton, BorderLayout.EAST);
 		JButton adjustementButton = new JButton("AJUSTER");
@@ -119,11 +118,85 @@ public class Fenetre extends JFrame implements KeyListener {
 				space.repaint();
 			}
 		});
-		translationButtons.add(adjustementButton, BorderLayout.CENTER); 
+		translationButtons.add(adjustementButton, BorderLayout.CENTER);
 		buttons.add(translationButtons);
-		
+		// Boutons de rotation
+		JPanel rotationButtons = new JPanel(new GridLayout(3, 3));
+
+		JButton rotationXLeftButton = new JButton("⇦");
+		rotationXLeftButton.setFocusable(false);
+		rotationXLeftButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.X, -2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationXLeftButton);
+
+		rotationButtons.add(new JLabel("AXE X", JLabel.CENTER));
+
+		JButton rotationXRightButton = new JButton("⇨");
+		rotationXRightButton.setFocusable(false);
+		rotationXRightButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.X, 2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationXRightButton);
+
+		JButton rotationYLeftButton = new JButton("⇦");
+		rotationYLeftButton.setFocusable(false);
+		rotationYLeftButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.Y, -2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationYLeftButton);
+
+		rotationButtons.add(new JLabel("AXE Y", JLabel.CENTER));
+
+		JButton rotationYRightButton = new JButton("⇨");
+		rotationYRightButton.setFocusable(false);
+		rotationYRightButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.Y, 2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationYRightButton);
+
+		JButton rotationZLeftButton = new JButton("⇦");
+		rotationZLeftButton.setFocusable(false);
+		rotationZLeftButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.Z, -2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationZLeftButton);
+
+		rotationButtons.add(new JLabel("AXE Z", JLabel.CENTER));
+
+		JButton rotationZRightButton = new JButton("⇨");
+		rotationZRightButton.setFocusable(false);
+		rotationZRightButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				space.rotateModel(Axis.Z, 2);
+				space.repaint();
+			}
+		});
+		rotationButtons.add(rotationZRightButton);
+		buttons.add(rotationButtons);
 	}
-	
+
 	@SuppressWarnings("unused")
 	private void initializeOptions() {
 		// TODO

@@ -1,7 +1,7 @@
 package projetmode;
 
 /**
- * Cette classe repr�sente une face 3D compos�e de plusieurs points.
+ * Cette classe represente une face 3D composee de plusieurs points.
  * 
  * @author Groupe K5
  *
@@ -10,7 +10,7 @@ public class Face {
 	private Point[] points;
 
 	/**
-	 * Instancie une face � partir d'un tableau de points pass� en param�tre.
+	 * Instancie une face a partir d'un tableau de points passe en parametre.
 	 * 
 	 * @param points
 	 *            Le tableau de points.
@@ -27,7 +27,7 @@ public class Face {
 	}
 
 	/**
-	 * Translate cette face sur la matrice colonne pass�e en param�tre.
+	 * Translate cette face sur la matrice colonne passee en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne sur laquelle cette face translatera.
@@ -39,10 +39,10 @@ public class Face {
 	}
 
 	/**
-	 * Change l'�chelle cette face sur la matrice colonne pass�e en param�tre.
+	 * Change l'echelle cette face sur la matrice colonne passee en parametre.
 	 * 
 	 * @param columnMatrix
-	 *            La matrice colonne sur laquelle cette face changera d'�chelle.
+	 *            La matrice colonne sur laquelle cette face changera d'echelle.
 	 */
 	public void scale(Matrix columnMatrix) {
 		for (int i = 0; i < points.length; i++) {
@@ -51,13 +51,13 @@ public class Face {
 	}
 
 	/**
-	 * Fait tourner cette face autour de l'axe d'un angle en degr�s pass�s en
-	 * param�tres.
+	 * Fait tourner cette face autour de l'axe d'un angle en degres passes en
+	 * parametres.
 	 * 
 	 * @param axis
 	 *            L'axe autour duquel la face tournera.
 	 * @param angleInDegrees
-	 *            L'angle degr�s de rotation autour de l'axe pass� en param�tre.
+	 *            L'angle degres de rotation autour de l'axe passe en parametre.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		for (int i = 0; i < points.length; i++) {

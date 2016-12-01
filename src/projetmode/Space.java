@@ -57,8 +57,8 @@ public class Space extends JPanel {
 	}
 
 	/**
-	 * Ajuste le modele, sa taille est recalcul�e suivant la taille de la frame
-	 * qui la contient, et le modele est replac� au centre de la frame.
+	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
+	 * qui la contient, et le modele est replace au centre de la frame.
 	 */
 	public void adjustModel() {
 		adjustScaling();
@@ -66,7 +66,7 @@ public class Space extends JPanel {
 	}
 
 	/**
-	 * Ajuste le modele, sa taille est recalcul�e suivant la taille de la frame
+	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
 	 * qui la contient,
 	 */
 	public void adjustScaling() {

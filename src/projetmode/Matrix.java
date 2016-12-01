@@ -1,7 +1,7 @@
 package projetmode;
 
 /**
- * Cette classe représente une matrice M x N contenant des double.
+ * Cette classe represente une matrice M x N contenant des double.
  * 
  * @author Groupe K5
  *
@@ -22,7 +22,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Instancie une matrice à partir du tableau de double passé en paramètre.
+	 * Instancie une matrice a partir du tableau de double passe en parametre.
 	 * 
 	 * @param table
 	 *            Le tableau de double.
@@ -50,7 +50,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Retourne l'élément à la position i,j de cette matrice.
+	 * Retourne l'element a la position i,j de cette matrice.
 	 * 
 	 * @param i
 	 *            L'indice de ligne.
@@ -63,7 +63,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Modifie l'élément à la position i,j par l'élément passé en paramètre de
+	 * Modifie l'element a la position i,j par l'element passe en parametre de
 	 * cette matrice.
 	 * 
 	 * @param i
@@ -71,26 +71,26 @@ public class Matrix {
 	 * @param j
 	 *            L'indice de colonne.
 	 * @param element
-	 *            Le nouvel élément.
+	 *            Le nouvel element.
 	 */
 	public void setElement(int i, int j, double element) {
 		table[i][j] = element;
 	}
 
 	/**
-	 * Renvoie la matrice produit de cette matrice par la matrice passée en
-	 * paramètre.
+	 * Renvoie la matrice produit de cette matrice par la matrice passee en
+	 * parametre.
 	 * 
 	 * @param matrix
-	 *            La matrice à multiplier.
-	 * @return La matrice produit de cette matrice par la matrice à multiplier.
+	 *            La matrice a multiplier.
+	 * @return La matrice produit de cette matrice par la matrice a multiplier.
 	 */
 	public Matrix multiply(Matrix matrix) {
 		return Matrix.getMatrixProduct(this, matrix);
 	}
 
 	/**
-	 * Renvoie la matrice produit des matrices A et B passées en paramètres.
+	 * Renvoie la matrice produit des matrices A et B passees en parametres.
 	 * 
 	 * @param matrixA
 	 *            La matrice A.
@@ -112,7 +112,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Renvoie la matrice de translation du vecteur passé en paramétre.
+	 * Renvoie la matrice de translation du vecteur passe en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            Le vecteur.
@@ -125,11 +125,11 @@ public class Matrix {
 	}
 
 	/**
-	 * Renvoie la matrice de changement d'échelle du vecteur passé en paramétre.
+	 * Renvoie la matrice de changement d'echelle du vecteur passe en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            Le vecteur.
-	 * @return La matrice de changement d'échelle.
+	 * @return La matrice de changement d'echelle.
 	 */
 	public static Matrix getScalingMatrix(Matrix columnMatrix) {
 		return new Matrix(
@@ -138,13 +138,13 @@ public class Matrix {
 	}
 
 	/**
-	 * Renvoie la matrice de rotation de l'axe et de l'angle en degrés passé en
-	 * paramètre.
+	 * Renvoie la matrice de rotation de l'axe et de l'angle en degres passe en
+	 * parametre.
 	 * 
 	 * @param axis
 	 *            L'axe de rotation
 	 * @param angleInDegrees
-	 *            L'angle en degrés.
+	 *            L'angle en degres.
 	 * @return La matrice de rotation.
 	 */
 	public static Matrix getRotationMatrix(Axis axis, double angleInDegrees) {
