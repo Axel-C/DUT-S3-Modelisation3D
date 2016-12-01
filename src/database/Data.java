@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 public class Data {
 	static Connection c = null;
 	static Statement stmt = null;
+	static PreparedStatement ps = null ;
 
 	/**
 	 * Renvoi le contenu de la table "Files" de la base de donnÃ©e
@@ -48,7 +49,7 @@ public class Data {
 		
 	}
 	/**
-	 * Récupère les fichiers contenu dans la base de donnee
+	 * Recupere les fichiers contenu dans la base de donnee
 	 * @return	Liste des fichiers
 	 */
 	public static ArrayList<Fichier> list() {
@@ -130,6 +131,20 @@ public class Data {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false ;
+		}
+		
+		
+	}
+	
+	public static Fichier find(String nom){
+		try {
+			ouverture();
+			ps = c.prepareStatement("SELECT * FROM Files");
+			String querry = "";
+			ResultSet rs = stmt.executeQuery(querry);
+			fermeture();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		

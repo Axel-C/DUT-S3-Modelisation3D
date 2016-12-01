@@ -15,6 +15,7 @@ public class Main {
 		fichiers = Data.list();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		all();
+		
 
 	}
 	
@@ -83,6 +84,11 @@ public class Main {
 	}
 	
 	public static void add(){
+		new Menu();
+	}
+	
+	public static void edit(String nom){
+		
 		new Menu();
 	}
 
