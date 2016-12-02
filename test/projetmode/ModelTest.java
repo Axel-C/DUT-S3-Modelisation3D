@@ -14,7 +14,7 @@ import projetmode.Point;
 
 @RunWith(JUnit4.class)
 public class ModelTest {
-	File plyFile = new File("livrable1/data/mug.ply");
+	File plyFile = new File("livrable1/data/apple.ply");
 	File plyFileText = new File("livrable1/data/test_file1.txt");
 	Model m;
 
@@ -55,23 +55,22 @@ public class ModelTest {
 		assertFalse(ouvrable(plyFileText));
 	}
 
-	/* @Test
-	 * public void testBarycentre() throws Exception {
-	 * m = new Model(plyFile);
-	 *	Point expected= new Point(0.0,0.0,0.0);
-	 *	for(int i=0; i<m.getPoints().length; i++) {
-	 *		expected.setX(expected.getX()+ m.getPoints()[i].getX());
-	 *		expected.setY(expected.getY()+ m.getPoints()[i].getY());
-	 *		expected.setZ(expected.getZ()+ m.getPoints()[i].getZ());
-	 *	}
-	 *	Point actual = m.barycentre();
-	 *	System.out.println(expected + " ," + actual);
-	 *	assertEquals(expected.getX(),actual.getX(),0.0);
-	 *	assertEquals(expected.getY(),actual.getY(),0.0);
-	 *	assertEquals(expected.getZ(),actual.getZ(),0.0);
-	 *	}
-	 *
-	 *	
+	/*@Test
+	public void testBarycentre() throws Exception {
+		Point expected= new Point(0.0,0.0,0.0);
+		for(int i=0; i<m.getPoints().length; i++) {
+			expected.setX(expected.getX()+ m.getPoints()[i].getX());
+			expected.setY(expected.getY()+ m.getPoints()[i].getY());
+			expected.setZ(expected.getZ()+ m.getPoints()[i].getZ());
+		}
+		Point actual = m.barycentre();
+		System.out.println(expected + " ," + actual);
+		assertEquals(expected.getX(),actual.getX(),0.0);
+		assertEquals(expected.getY(),actual.getY(),0.0);
+		assertEquals(expected.getZ(),actual.getZ(),0.0);
+	}*/
+
+	/*	
 	 * @Test public void testVertex() { try { m = new Model(plyFile); } catch
 	 * (Exception e) { e.printStackTrace(); } for (int i = 0; i <
 	 * plyVertex.length; i++) { assertEquals(plyVertex[i].getX(),

@@ -136,7 +136,7 @@ public class Data {
 		
 	}
 	
-	public static Fichier find(String nom){
+	public static void find(String nom){
 		try {
 			ouverture();
 			ps = c.prepareStatement("SELECT * FROM Files");
