@@ -14,12 +14,36 @@ public class Main {
 	public static void main(String[] args) {
 		fichiers = Data.list();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		all();
+		
+		if(args[0].equals("--all")){
+			all();
+		}else if (args[0].equals("--add")){
+			add();
+		}
+		else if(args.length > 1){
+		if(args[0].equals("--name")){
+			name(args[1]);
+		}else if(args[0].equals("--find")){
+			String liste = "" ;
+			for(int i = 0 ; i < args.length ; i++){
+				liste += args[i] + " "  ;
+			}
+			find(liste);
+		}else if(args[0].equals("--delete")){
+			delete(args[1]);
+		}else if(args[0].equals("--edit")){
+			edit(args[1]);
+		}
+		
+		
+		}
 		
 
 	}
 	
-	
+	/**
+	 * fenetre avec une liste (JList) des informations sur tous les modeles de la bibliotheque
+	 */
 	public static void all(){
 		String data[] = new String[fichiers.size()];
 		for(int i = 0 ; i <  data.length ; i++ ){
@@ -31,6 +55,10 @@ public class Main {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * fenetre avec les informations du modele specifie en parametre. Un message d’erreur approprie sera affiche si le modele nexiste pas.
+	 * @param nom Nom du fichier
+	 */
 	public static void name(String nom){
 		Fichier trouve = null ;
 		for(Fichier f:fichiers){
@@ -48,7 +76,10 @@ public class Main {
 		
 		
 	}
-	
+	/**
+	 * fenetre avec une liste contenant uniquement les mod`eles qui sont decrits par au moins un des mots cles
+	 * @param motscle
+	 */
 	public static void find(String motscle){
 		String[] tags = motscle.split(" ");
 		ArrayList<Fichier> list = new ArrayList<>();
@@ -73,7 +104,10 @@ public class Main {
 		}
 		
 	}
-	
+	/**
+	 * supprime de la base de donnees le mod`ele dont le nom est donne en parametre. Le seule option qui n’ouvre pas
+	 * @param name
+	 */
 	public static void delete(String name){
 		boolean retour = Data.delete(name);
 		if(retour){
@@ -82,14 +116,27 @@ public class Main {
 			System.out.println("Fichier introuvable dans la base de donnee");
 		}
 	}
-	
+	/**
+	 * fenetre avec formulaire de saisie des informations concernant un modele. Un bouton permet d’ajouter le modele
+	 */
 	public static void add(){
 		new Menu();
 	}
-	
+	/**
+	 * fenetre avec formulaire de saisie pour modifier les informations concernant le modele dont le nom est donne en
+parametre. Si certaines informations ne peuvent pas etre changees (l’identifiant), le formulaire ne doit pas le
+permettre. Un bouton permet d’enregistrer les modifications dans la base de donnees.
+	 * @param nom
+	 */
 	public static void edit(String nom){
+		Fichier f = Data.find(nom);
+		if(f == null){
+			JOptionPane.showMessageDialog(null, "Fichier introuvable");
+			
+		}else{
+			new Menu(f.nom , f.path , f.getTagsToString() , Menu.MODIFIER);
+		}
 		
-		new Menu();
+	}
 	}
 
-}

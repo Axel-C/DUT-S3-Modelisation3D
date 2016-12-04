@@ -11,14 +11,11 @@ public class Data {
 	static Statement stmt = null;
 	static PreparedStatement ps = null ;
 
+	
 	/**
-	 * Renvoi le contenu de la table "Files" de la base de donnÃ©e
-	 * 
-	 * @return une ArrayList avec le contenu de la table
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Ouvre la connection avec la base de donnee
+	 * @return
 	 */
-
 	public static boolean ouverture() {
 		// OUVERTURE BASE DE DONNEE
 		try {
@@ -39,7 +36,7 @@ public class Data {
 	public static void fermeture() {
 
 		try {
-			stmt.close();
+			// stmt.close();
 			c.close();
 			System.out.println("Fermeture de la base");
 		} catch (SQLException e) {
@@ -104,6 +101,13 @@ public class Data {
 		
 	}
 	
+	/**
+	 * Ajoute un modele à la base de donnee
+	 * @param nom
+	 * @param tags
+	 * @param path
+	 * @return
+	 */
 	public static boolean add(String nom , String tags , String path){
 		try {
 			ouverture();
@@ -120,6 +124,11 @@ public class Data {
 		}
 	}
 	
+	/**
+	 * Supprime un modele de la base de donnee
+	 * @param name Nom du modele a supprimer
+	 * @return
+	 */
 	public static boolean delete(String name) {
 		try {
 			ouverture();
@@ -135,19 +144,54 @@ public class Data {
 		
 		
 	}
-	
-	public static void find(String nom){
+	/**
+	 * Renvoi un objet Fichier du modele de la base de donnee dont le nom est passe en parametre
+	 * @param nom Nom du modele
+	 * @return
+	 */
+	public static Fichier find(String nom){
+		Fichier retour = null ;
 		try {
 			ouverture();
-			ps = c.prepareStatement("SELECT * FROM Files");
-			String querry = "";
-			ResultSet rs = stmt.executeQuery(querry);
+			ps = c.prepareStatement("SELECT * FROM Files WHERE nom = ?");
+			ps.setString(1, nom);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+			retour = new Fichier(rs);
+			}
 			fermeture();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return retour ;
 		
-		
+	}
+	/**
+	 * Modifie un Fichier dans la base de donnee
+	 * @param nom Ancien nom du fichier 
+	 * @param nouveauNom Nouveau nom du fichier
+	 * @param tags Mots clés coresspondants au fichier
+	 * @param path Chemin d'acces au fichier
+	 * @return True si oprération reussi , false sinon
+	 */
+	public static boolean update(String nom ,String nouveauNom , String tags , String path){
+		try {
+			ouverture();
+			stmt = c.createStatement();
+			String querry = "UPDATE Files";
+			querry += " SET nom = '" + nouveauNom + "'  ,  tags = '" + tags +"' , path = '" + path + "' " ;
+			querry += " WHERE nom = '" + nom  + "'";
+			System.out.println(querry);
+			stmt.executeUpdate(querry);
+			fermeture();
+			return true ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 

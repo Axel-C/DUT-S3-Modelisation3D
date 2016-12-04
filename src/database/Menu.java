@@ -19,7 +19,13 @@ public class Menu extends JFrame {
 	
 	
 	
-	
+	/**
+	 * Affiche un nouveau Menu pour ajouter ou modifier un model de la base
+	 * @param nomPo nom
+	 * @param pathPo chemin d'access
+	 * @param tagsPo mots cles
+	 * @param action 0 pour AJOUTER et 1 pour MODIFIER
+	 */
 	public Menu(String nomPo , String pathPo , String tagsPo , int action){
 		setTitle("Nouveau Fichier");
 		setLayout(new GridLayout(5, 2));
@@ -54,7 +60,16 @@ public class Menu extends JFrame {
 			});
 			add(ajouter);
 		}else{
-			
+			JButton modifier = new JButton("Modifier");
+			modifier.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Data.update(nomPo, nom.getText(), tags.getText(), path.getText());
+					
+				}
+			});
+			add(modifier);
 		}
 		
 		
@@ -64,7 +79,9 @@ public class Menu extends JFrame {
 		setSize(500, 250);
 		setVisible(true);
 	}
-	
+	/**
+	 * Creer un menu preconstruit pour ajouter
+	 */
 	public Menu(){
 		new Menu("","","",0);
 	}
