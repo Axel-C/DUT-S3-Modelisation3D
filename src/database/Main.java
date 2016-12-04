@@ -3,6 +3,7 @@ package database;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -71,7 +72,7 @@ public class Main {
 			}
 		}
 		if (trouve != null) {
-			frame.add(trouve.panel());
+			frame.add(new JLabel(trouve.toString()));
 			frame.setSize(500, 100);
 			frame.setVisible(true);
 		} else {
@@ -99,13 +100,15 @@ public class Main {
 			}
 		}
 		for (Fichier f : list) {
-			frame.add(f.panel());
+			
 		}
 		if (list.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
 		} else {
+			JList<Object> liste = new JList<>(list.toArray()) ;
+			frame.add(liste);
 
-			frame.setSize(800, 800);
+			frame.setSize(400, 150);
 			frame.setVisible(true);
 		}
 

@@ -64,10 +64,11 @@ public class Menu extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Data.update(nomPo, nom.getText(), tags.getText(), path.getText());
-					
+					Menu.this.dispose();
 				}
 			});
 			add(modifier);
+			
 		}
 		
 		
