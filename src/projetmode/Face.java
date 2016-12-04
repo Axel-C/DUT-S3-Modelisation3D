@@ -39,7 +39,7 @@ public class Face {
 	}
 
 	/**
-	 * Change l'echelle cette face sur la matrice colonne passee en parametre.
+	 * Change l'echelle de cette face sur la matrice colonne passee en parametre.
 	 * 
 	 * @param columnMatrix
 	 *            La matrice colonne sur laquelle cette face changera d'echelle.
@@ -51,13 +51,13 @@ public class Face {
 	}
 
 	/**
-	 * Fait tourner cette face autour de l'axe d'un angle en degres passes en
-	 * parametres.
+	 * Fait tourner cette face autour de l'axe d'un angle passe en
+	 * parametre.
 	 * 
 	 * @param axis
 	 *            L'axe autour duquel la face tournera.
 	 * @param angleInDegrees
-	 *            L'angle degres de rotation autour de l'axe passe en parametre.
+	 *            L'angle de rotation (exprime en degres de) autour de l'axe passe en parametre.
 	 */
 	public void rotate(Axis axis, double angleInDegrees) {
 		for (int i = 0; i < points.length; i++) {
@@ -141,6 +141,12 @@ public class Face {
 		return max;
 	}
 	
+	/**
+	 * Renvoie la valeur Z du point contenu dans le tableau de Point "points"
+	 * pour lequel la valeur Z est la plus petite de tout les points du tableau.
+	 * 
+	 * @return Le plus petit Z des points de cette face.
+	 */
 	public double getZMin() {
 		double min = points[0].getZ();
 		for (int i = 1; i < points.length; i++) {
@@ -150,6 +156,12 @@ public class Face {
 		return min;
 	}
 
+	/**
+	 * Renvoie la valeur Z du point contenu dans le tableau de Point "points"
+	 * pour lequel la valeur Z est la plus grande de tout les points du tableau.
+	 * 
+	 * @return Le plus grand Z des points de cette face.
+	 */
 	public double getZMax() {
 		double max = points[0].getZ();
 		for (int i = 1; i < points.length; i++) {

@@ -120,6 +120,11 @@ public class Model {
 		}
 		return min;
 	}
+	
+	/**
+	 * Renvoie le centre de gravite du modele sous la forme d'un point. 
+	 * @return Le centre de gravite du modele.
+	 */
 
 	public Point barycentre() {
 		Point centre = new Point(0.0,0.0,0.0);

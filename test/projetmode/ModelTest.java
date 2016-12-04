@@ -16,7 +16,6 @@ import projetmode.Point;
 public class ModelTest {
 	File plyFile = new File("livrable1/data/apple.ply");
 	File plyFileText = new File("livrable1/data/test_file1.txt");
-	Model m;
 
 	Point[] plyVertex = new Point[8];
 	{
@@ -57,7 +56,9 @@ public class ModelTest {
 
 	/*@Test
 	public void testBarycentre() throws Exception {
+		Model m= new Model(plyFile);
 		Point expected= new Point(0.0,0.0,0.0);
+		//System.out.println(m.getPoints().length);
 		for(int i=0; i<m.getPoints().length; i++) {
 			expected.setX(expected.getX()+ m.getPoints()[i].getX());
 			expected.setY(expected.getY()+ m.getPoints()[i].getY());
