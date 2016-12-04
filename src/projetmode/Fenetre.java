@@ -6,7 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +42,8 @@ public class Fenetre extends JFrame implements KeyListener {
 		super.addKeyListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+		space.adjustModel();
+		space.repaint();
 	}
 
 	private void initializeButtons() {
@@ -67,7 +75,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		// Boutons de translation et bouton d'ajustement
 		JPanel translationButtons = new JPanel(new BorderLayout());
 		translationButtons.setBorder(new TitledBorder("Translation"));
-		JButton upTranslationButton = new JButton("⇧");
+		JButton upTranslationButton = new JButton("Haut");
 		upTranslationButton.setFocusable(false);
 		upTranslationButton.addActionListener(new ActionListener() {
 			@Override
@@ -78,7 +86,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		});
 		translationButtons.add(upTranslationButton, BorderLayout.NORTH);
-		JButton downTranslationButton = new JButton("⇩");
+		JButton downTranslationButton = new JButton("Bas");
 		downTranslationButton.setFocusable(false);
 		downTranslationButton.addActionListener(new ActionListener() {
 			@Override
@@ -89,7 +97,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		});
 		translationButtons.add(downTranslationButton, BorderLayout.SOUTH);
-		JButton leftTranslationButton = new JButton("⇦");
+		JButton leftTranslationButton = new JButton("Gauche");
 		leftTranslationButton.setFocusable(false);
 		leftTranslationButton.addActionListener(new ActionListener() {
 			@Override
@@ -100,7 +108,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		});
 		translationButtons.add(leftTranslationButton, BorderLayout.WEST);
-		JButton rightTranslationButton = new JButton("⇨");
+		JButton rightTranslationButton = new JButton("Droite");
 		rightTranslationButton.setFocusable(false);
 		rightTranslationButton.addActionListener(new ActionListener() {
 			@Override
@@ -126,7 +134,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		// Boutons de rotation
 		JPanel rotationButtons = new JPanel(new GridLayout(3, 3));
 		rotationButtons.setBorder(new TitledBorder("Rotation"));
-		JButton rotationXLeftButton = new JButton("⇦");
+		JButton rotationXLeftButton = new JButton("Gauche");
 		rotationXLeftButton.setFocusable(false);
 		rotationXLeftButton.addActionListener(new ActionListener() {
 			@Override
@@ -139,7 +147,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		rotationButtons.add(new JLabel("Axe X", JLabel.CENTER));
 
-		JButton rotationXRightButton = new JButton("⇨");
+		JButton rotationXRightButton = new JButton("Droite");
 		rotationXRightButton.setFocusable(false);
 		rotationXRightButton.addActionListener(new ActionListener() {
 			@Override
@@ -150,7 +158,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		});
 		rotationButtons.add(rotationXRightButton);
 
-		JButton rotationYLeftButton = new JButton("⇦");
+		JButton rotationYLeftButton = new JButton("Gauche");
 		rotationYLeftButton.setFocusable(false);
 		rotationYLeftButton.addActionListener(new ActionListener() {
 			@Override
@@ -163,7 +171,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		rotationButtons.add(new JLabel("Axe Y", JLabel.CENTER));
 
-		JButton rotationYRightButton = new JButton("⇨");
+		JButton rotationYRightButton = new JButton("Droite");
 		rotationYRightButton.setFocusable(false);
 		rotationYRightButton.addActionListener(new ActionListener() {
 			@Override
@@ -174,7 +182,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		});
 		rotationButtons.add(rotationYRightButton);
 
-		JButton rotationZLeftButton = new JButton("⇦");
+		JButton rotationZLeftButton = new JButton("Gauche");
 		rotationZLeftButton.setFocusable(false);
 		rotationZLeftButton.addActionListener(new ActionListener() {
 			@Override
@@ -187,7 +195,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		rotationButtons.add(new JLabel("Axe Z", JLabel.CENTER));
 
-		JButton rotationZRightButton = new JButton("⇨");
+		JButton rotationZRightButton = new JButton("Droite");
 		rotationZRightButton.setFocusable(false);
 		rotationZRightButton.addActionListener(new ActionListener() {
 			@Override

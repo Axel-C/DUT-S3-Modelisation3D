@@ -46,33 +46,4 @@ public class Main {
 		}
 		return ext.equals(".ply");
 	}
-
-	/*
-	 * @SuppressWarnings("unused") private static boolean checkPlyFile(File
-	 * plyFile) { BufferedReader bufferedReader; String lineRead = ""; String[]
-	 * splitedLineRead; boolean checked = true; int nVertices, nFaces; try {
-	 * bufferedReader = new BufferedReader(new FileReader(plyFile)); lineRead =
-	 * bufferedReader.readLine(); if (!lineRead.equals("ply")) { checked =
-	 * false; } bufferedReader.readLine(); bufferedReader.readLine(); lineRead =
-	 * bufferedReader.readLine(); splitedLineRead = lineRead.split(" "); if
-	 * (splitedLineRead.length != 3) { checked = false; } else { if
-	 * (!splitedLineRead[0].equals("element") ||
-	 * !splitedLineRead[1].equals("vertex") || !isAnInteger(splitedLineRead[2]))
-	 * { checked = false; } else { nVertices =
-	 * Integer.parseInt(splitedLineRead[2]); if (nVertices < 0) { checked =
-	 * false; } } } bufferedReader.readLine(); bufferedReader.readLine();
-	 * bufferedReader.readLine(); lineRead = bufferedReader.readLine();
-	 * splitedLineRead = lineRead.split(" "); if (splitedLineRead.length != 3) {
-	 * checked = false; } else { if (!splitedLineRead[0].equals("element") ||
-	 * !splitedLineRead[1].equals("face") || !isAnInteger(splitedLineRead[2])) {
-	 * checked = false; } else { nFaces = Integer.parseInt(splitedLineRead[2]);
-	 * if (nFaces < 0) { checked = false; } } } bufferedReader.close(); } catch
-	 * (IOException e) { e.printStackTrace(); } return checked; }
-	 * 
-	 * private static boolean isAnInteger(String str) { try {
-	 * Integer.parseInt(str); } catch (NumberFormatException e) { return false;
-	 * }
-	 * 
-	 * return true; }
-	 */
 }
