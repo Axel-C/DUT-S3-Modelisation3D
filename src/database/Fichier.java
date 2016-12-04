@@ -1,14 +1,12 @@
 package database;
 
 import java.awt.GridLayout;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class Fichier {
 	public int id;
 	public String nom;
