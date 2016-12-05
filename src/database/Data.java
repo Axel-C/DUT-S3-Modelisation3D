@@ -11,7 +11,9 @@ public class Data {
 	static Statement stmt = null;
 	static PreparedStatement ps = null ;
 
-	
+	private Data(){
+		
+	}
 	/**
 	 * Ouvre la connection avec la base de donnee
 	 * @return
@@ -68,7 +70,7 @@ public class Data {
 						rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 			}
 			
-
+			rs.close();
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
@@ -102,7 +104,7 @@ public class Data {
 	}
 	
 	/**
-	 * Ajoute un modele à la base de donnee
+	 * Ajoute un modele ï¿½ la base de donnee
 	 * @param nom
 	 * @param tags
 	 * @param path
@@ -172,9 +174,9 @@ public class Data {
 	 * Modifie un Fichier dans la base de donnee
 	 * @param nom Ancien nom du fichier 
 	 * @param nouveauNom Nouveau nom du fichier
-	 * @param tags Mots clés coresspondants au fichier
+	 * @param tags Mots clï¿½s coresspondants au fichier
 	 * @param path Chemin d'acces au fichier
-	 * @return True si oprération reussi , false sinon
+	 * @return True si oprï¿½ration reussi , false sinon
 	 */
 	public static boolean update(String nom ,String nouveauNom , String tags , String path){
 		try {
