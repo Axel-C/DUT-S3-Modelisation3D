@@ -1,4 +1,4 @@
-package projetmode;
+package View;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -16,6 +16,9 @@ import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import Model.Axis;
+import Model.Matrix;
 
 @SuppressWarnings("serial")
 public class Fenetre extends JFrame implements KeyListener {

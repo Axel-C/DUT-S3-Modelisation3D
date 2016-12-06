@@ -1,9 +1,14 @@
-package projetmode;
+package View;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+
+import Model.Axis;
+import Model.Matrix;
+import Model.Model;
+import Model.Point;
 
 @SuppressWarnings("serial")
 public class Space extends JPanel {

@@ -1,4 +1,4 @@
-package projetmode;
+package Model;
 
 /**
  * Cette classe represente une face 3D composee de plusieurs points.

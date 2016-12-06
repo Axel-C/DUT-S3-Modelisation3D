@@ -2,6 +2,10 @@ package projetmode;
 
 import java.io.File;
 
+import Model.Model;
+import View.Fenetre;
+import View.Space;
+
 public class Main {
 	public static void main(String[] args) {
 		String filePath = "";

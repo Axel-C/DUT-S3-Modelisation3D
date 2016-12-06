@@ -1,4 +1,4 @@
-package projetmode;
+package Model;
 
 /**
  * Cette classe represente une matrice M x N contenant des double.
