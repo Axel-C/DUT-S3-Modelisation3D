@@ -62,11 +62,7 @@ public class Fichier {
 	 * Affiche le fichier sous forme de chaine de caractere 
 	 */
 	public String toString() {
-		String retour =  id + " , " + nom + "\n , " + path + " , "  ;
-				for(int i = 0 ; i < tags.length ; i++){
-					retour += tags[i] + " " ;
-				}
-		return retour ;
+		return nom ;
 	}
 	
 	/**

@@ -41,7 +41,7 @@ public class Menu extends JFrame {
 		add(path);
 		
 		//MOTS CLES
-		add(new JLabel("Mots cles associée (separe par des espaces) :"));
+		add(new JLabel("Mots cles associï¿½e (separe par des espaces) :"));
 		JTextField tags = new JTextField(tagsPo);
 		add(tags);
 		
