@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * Cette classe represente une face 3D composee de plusieurs points.

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * Cette classe represente une matrice M x N contenant des double.

@@ -2,9 +2,9 @@ package projetmode;
 
 import java.io.File;
 
-import Model.Model;
-import View.Fenetre;
-import View.Space;
+import model.Model;
+import view.Fenetre;
+import view.Space;
 
 public class Main {
 	public static void main(String[] args) {

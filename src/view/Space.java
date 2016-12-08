@@ -1,14 +1,14 @@
-package View;
+package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import Model.Axis;
-import Model.Matrix;
-import Model.Model;
-import Model.Point;
+import model.Axis;
+import model.Matrix;
+import model.Model;
+import model.Point;
 
 @SuppressWarnings("serial")
 public class Space extends JPanel {

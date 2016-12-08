@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * Cette classes represente un point 3D ayant pour coordonnees X,Y et Z.
