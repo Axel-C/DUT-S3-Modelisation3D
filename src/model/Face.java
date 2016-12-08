@@ -51,12 +51,10 @@ public class Face {
 	}
 
 	/**
-	 * @return Retourne un tableau de trois double contenant les valeurs a, b, c, d de l'equation ax+by+cz+d=0.
+	 * @return Retourne le vecteur normal à la face.
 	 */
 	
-	public double[] normal() {
-		double[] normal= new double[3];
-		
+	public Matrix normal() {
 		Matrix v1 = new Matrix(3,1);
 		Matrix v2 = new Matrix(3,1);
 		v1.setElement(0, 0, (this.getPoints()[1].getX()-this.getPoints()[0].getX()));
@@ -67,9 +65,11 @@ public class Face {
 		v2.setElement(1, 0, (this.getPoints()[2].getY()-this.getPoints()[0].getY()));
 		v2.setElement(2, 0, (this.getPoints()[2].getZ()-this.getPoints()[0].getZ()));
 		
-		normal[0]= v1.getElement(1, 0)*v2.getElement(2, 0) - v1.getElement(2, 0)*v2.getElement(1, 0); 
-		normal[1]= v1.getElement(2, 0)*v2.getElement(0, 0) - v1.getElement(0, 0)*v2.getElement(2, 0);
-		normal[2]= v1.getElement(0, 0)*v2.getElement(1, 0) - v1.getElement(1, 0)*v2.getElement(0, 0);
+		Matrix normal = new Matrix (3,1);
+		
+		normal.setElement(0, 0, (v1.getElement(1, 0)*v2.getElement(2, 0) - v1.getElement(2, 0)*v2.getElement(1, 0))); 
+		normal.setElement(1, 0, (v1.getElement(2, 0)*v2.getElement(0, 0) - v1.getElement(0, 0)*v2.getElement(2, 0)));
+		normal.setElement(2, 0, (v1.getElement(0, 0)*v2.getElement(1, 0) - v1.getElement(1, 0)*v2.getElement(0, 0)));
 		
 		return normal;
 	}

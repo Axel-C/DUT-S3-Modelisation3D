@@ -31,11 +31,14 @@ public class FaceTest {
 	@Test
 	public void testNormal() {
 		Face actualFace = new Face(new Point[] { new Point(5, 0, 10), new Point(5, 5, 10), new Point(0, 5, 15) });
-		double[] expectedNormal= new double[] {25.0,0.0,25.0};
-		double[] actualNormal=actualFace.normal();
-		System.out.println("Test " + expectedNormal + " " + actualNormal);
-		for (int i = 0; i < expectedNormal.length; i++) {
-			assertEquals(expectedNormal[i], actualNormal[i], 0.1);
+		Matrix expectedNormal= new Matrix(3,1);
+		expectedNormal.setElement(0, 0, 25.0);
+		expectedNormal.setElement(1, 0, 0.0);
+		expectedNormal.setElement(2, 0, 25.0);
+		Matrix actualNormal= new Matrix(3,1);
+		actualNormal=actualFace.normal();
+		for (int i = 0; i < expectedNormal.getM(); i++) {
+			assertEquals(expectedNormal.getElement(i, 0), actualNormal.getElement(i, 0), 0.1);
 		}
 	}
 
