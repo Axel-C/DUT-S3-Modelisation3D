@@ -3,6 +3,7 @@ package projetmode;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import model.*;
 
 public class FaceTest {
 
@@ -24,6 +25,17 @@ public class FaceTest {
 			assertEquals(expectedFace.getPoints()[i].getX(), actualFace.getPoints()[i].getX(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getY(), actualFace.getPoints()[i].getY(), 0.1);
 			assertEquals(expectedFace.getPoints()[i].getZ(), actualFace.getPoints()[i].getZ(), 0.1);
+		}
+	}
+	
+	@Test
+	public void testNormal() {
+		Face actualFace = new Face(new Point[] { new Point(5, 0, 10), new Point(5, 5, 10), new Point(0, 5, 15) });
+		double[] expectedNormal= new double[] {25.0,0.0,25.0};
+		double[] actualNormal=actualFace.normal();
+		System.out.println("Test " + expectedNormal + " " + actualNormal);
+		for (int i = 0; i < expectedNormal.length; i++) {
+			assertEquals(expectedNormal[i], actualNormal[i], 0.1);
 		}
 	}
 

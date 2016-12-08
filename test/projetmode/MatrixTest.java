@@ -1,6 +1,7 @@
 package projetmode;
 
 import static org.junit.Assert.assertEquals;
+import model.*;
 
 import java.util.Random;
 

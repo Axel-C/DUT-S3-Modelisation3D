@@ -51,6 +51,30 @@ public class Face {
 	}
 
 	/**
+	 * @return Retourne un tableau de trois double contenant les valeurs a, b, c, d de l'equation ax+by+cz+d=0.
+	 */
+	
+	public double[] normal() {
+		double[] normal= new double[3];
+		
+		Matrix v1 = new Matrix(3,1);
+		Matrix v2 = new Matrix(3,1);
+		v1.setElement(0, 0, (this.getPoints()[1].getX()-this.getPoints()[0].getX()));
+		v1.setElement(1, 0, (this.getPoints()[1].getY()-this.getPoints()[0].getY()));
+		v1.setElement(2, 0, (this.getPoints()[1].getZ()-this.getPoints()[0].getZ()));
+		//Etant donné que les faces sont des triangles, on considérera qu'une face a 3 points
+		v2.setElement(0, 0, (this.getPoints()[2].getX()-this.getPoints()[0].getX()));
+		v2.setElement(1, 0, (this.getPoints()[2].getY()-this.getPoints()[0].getY()));
+		v2.setElement(2, 0, (this.getPoints()[2].getZ()-this.getPoints()[0].getZ()));
+		
+		normal[0]= v1.getElement(1, 0)*v2.getElement(2, 0) - v1.getElement(2, 0)*v2.getElement(1, 0); 
+		normal[1]= v1.getElement(2, 0)*v2.getElement(0, 0) - v1.getElement(0, 0)*v2.getElement(2, 0);
+		normal[2]= v1.getElement(0, 0)*v2.getElement(1, 0) - v1.getElement(1, 0)*v2.getElement(0, 0);
+		
+		return normal;
+	}
+
+	/**
 	 * Fait tourner cette face autour de l'axe d'un angle passe en
 	 * parametre.
 	 * 

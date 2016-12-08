@@ -1,10 +1,10 @@
 package projetmode;
 
 import java.io.File;
+import model.*;
 
 import org.junit.Test;
 
-import projetmode.Model;
 
 public class SpaceTest {
 	File plyFile = new File("livrable1/data/test_file1.ply");
