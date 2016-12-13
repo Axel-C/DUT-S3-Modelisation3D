@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Data {
-	static Connection c = null;
-	static Statement stmt = null;
-	static PreparedStatement ps = null ;
-
+	private Connection c = null;
+	private Statement stmt = null;
+	private PreparedStatement ps = null ;
+	private static Data instance = new Data() ;
 	private Data(){
 		
 	}
@@ -18,7 +18,11 @@ public class Data {
 	 * Ouvre la connection avec la base de donnee
 	 * @return
 	 */
-	public static boolean ouverture() {
+	
+	public static Data getInstance(){
+		return instance ;
+	}
+	public boolean ouverture() {
 		// OUVERTURE BASE DE DONNEE
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -35,7 +39,7 @@ public class Data {
 	 * Ferme la connection avec la base de donnee
 	 * @throws SQLException
 	 */
-	public static void fermeture() {
+	public void fermeture() {
 
 		try {
 			// stmt.close();
@@ -51,7 +55,7 @@ public class Data {
 	 * Recupere les fichiers contenu dans la base de donnee
 	 * @return	Liste des fichiers
 	 */
-	public static ArrayList<Fichier> list() {
+	public ArrayList<Fichier> findAll() {
 		ArrayList<Fichier> fichiers = new ArrayList<>();
 		ouverture();
 		try {
@@ -88,7 +92,7 @@ public class Data {
 	 * @param id du fichier a supprimer 
 	 * @return	reussite ou non de l'operation 
 	 */
-	public static boolean delete(int id) {
+	public boolean delete(int id) {
 		try {
 			stmt = c.createStatement();
 			String querry = "DELETE FROM Files WHERE id = '" + id + "'";
@@ -110,7 +114,7 @@ public class Data {
 	 * @param path
 	 * @return
 	 */
-	public static boolean add(String nom , String tags , String path){
+	public boolean add(String nom , String tags , String path){
 		try {
 			ouverture();
 			stmt = c.createStatement();
@@ -131,7 +135,7 @@ public class Data {
 	 * @param name Nom du modele a supprimer
 	 * @return
 	 */
-	public static boolean delete(String name) {
+	public boolean delete(String name) {
 		try {
 			ouverture();
 			stmt = c.createStatement();
@@ -151,7 +155,7 @@ public class Data {
 	 * @param nom Nom du modele
 	 * @return
 	 */
-	public static Fichier find(String nom){
+	public Fichier find(String nom){
 		Fichier retour = null ;
 		try {
 			ouverture();
@@ -178,7 +182,7 @@ public class Data {
 	 * @param path Chemin d'acces au fichier
 	 * @return True si opr�ration reussi , false sinon
 	 */
-	public static boolean update(String nom ,String nouveauNom , String tags , String path){
+	public boolean update(String nom ,String nouveauNom , String tags , String path){
 		try {
 			ouverture();
 			stmt = c.createStatement();

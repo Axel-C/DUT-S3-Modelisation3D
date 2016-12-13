@@ -5,9 +5,11 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import database.Data;
+
 public class Menu2 extends JFrame{
-	private Navigation liste = new Navigation() ;
-	private Information info = new Information();
+	private Navigation liste ;
+	private Information info = new Information() ;
 	
 	public static void main(String[] args ){
 		new Menu2();
@@ -18,8 +20,11 @@ public class Menu2 extends JFrame{
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 		
+		liste = new Navigation( info);
+		
 		add(liste, BorderLayout.WEST);
 		add(info , BorderLayout.CENTER);
+		
 		
 		
 		setTitle("Menu");
@@ -27,5 +32,7 @@ public class Menu2 extends JFrame{
 		setSize(600, 400);
 		setVisible(true);
 	}
-
+	
+	
+	
 }

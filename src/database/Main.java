@@ -12,11 +12,11 @@ public class Main {
 	static JFrame frame = new JFrame();
 
 	public static void main(String[] args) {
-		fichiers = Data.list();
+		fichiers = Data.findAll();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		if (args.length == 0) {
-			System.out.println("Aucune option passée");
+			System.out.println("Aucune option passee");
 		} else {
 			if (args[0].equals("--all")) {
 				all();
@@ -59,7 +59,7 @@ public class Main {
 
 	/**
 	 * fenetre avec les informations du modele specifie en parametre. Un message
-	 * d’erreur approprie sera affiche si le modele nexiste pas.
+	 * dï¿½erreur approprie sera affiche si le modele nexiste pas.
 	 * 
 	 * @param nom
 	 *            Nom du fichier
@@ -116,7 +116,7 @@ public class Main {
 
 	/**
 	 * supprime de la base de donnees le mod`ele dont le nom est donne en
-	 * parametre. Le seule option qui n’ouvre pas
+	 * parametre. Le seule option qui nï¿½ouvre pas
 	 * 
 	 * @param name
 	 */
@@ -131,7 +131,7 @@ public class Main {
 
 	/**
 	 * fenetre avec formulaire de saisie des informations concernant un modele.
-	 * Un bouton permet d’ajouter le modele
+	 * Un bouton permet dï¿½ajouter le modele
 	 */
 	public static void add() {
 		new Menu();
@@ -140,8 +140,8 @@ public class Main {
 	/**
 	 * fenetre avec formulaire de saisie pour modifier les informations
 	 * concernant le modele dont le nom est donne en parametre. Si certaines
-	 * informations ne peuvent pas etre changees (l’identifiant), le formulaire
-	 * ne doit pas le permettre. Un bouton permet d’enregistrer les
+	 * informations ne peuvent pas etre changees (lï¿½identifiant), le formulaire
+	 * ne doit pas le permettre. Un bouton permet dï¿½enregistrer les
 	 * modifications dans la base de donnees.
 	 * 
 	 * @param nom
