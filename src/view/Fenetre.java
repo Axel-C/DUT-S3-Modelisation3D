@@ -19,9 +19,11 @@ import javax.swing.event.ChangeListener;
 
 import model.Axis;
 import model.Matrix;
+import controller.*;
 
 @SuppressWarnings("serial")
 public class Fenetre extends JFrame implements KeyListener {
+
 	private Space space;
 	private JMenuBar options;
 	private JPanel globalContainer;
@@ -33,6 +35,7 @@ public class Fenetre extends JFrame implements KeyListener {
 		globalContainer = new JPanel(new BorderLayout());
 		this.space = space;
 		globalContainer.add(space, BorderLayout.CENTER);
+		ModelController.setSpace(space); 
 		initializeButtons();
 		globalContainer.add(buttons, BorderLayout.EAST);
 		super.setContentPane(globalContainer);
@@ -52,20 +55,8 @@ public class Fenetre extends JFrame implements KeyListener {
 		zoomButton.setFocusable(false);
 		JButton dezoomButton = new JButton("-");
 		dezoomButton.setFocusable(false);
-		zoomButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.scaleModel(new Matrix(new double[][] { { 1.05 }, { 1.05 }, { 1.05 }, { 1 } }));
-				space.repaint();
-			}
-		});
-		dezoomButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.scaleModel(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
-				space.repaint();
-			}
-		});
+		zoomButton.addActionListener(new ZoomAvant());
+		dezoomButton.addActionListener(new ZoomArriere());
 		scalingButtons.add(zoomButton);
 		scalingButtons.add(dezoomButton);
 		buttons.add(scalingButtons);
@@ -157,13 +148,7 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		JButton rotationYLeftButton = new JButton("Gauche");
 		rotationYLeftButton.setFocusable(false);
-		rotationYLeftButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.Y, -2);
-				space.repaint();
-			}
-		});
+		rotationYLeftButton.addActionListener(new RotateYLeft());
 		rotationButtons.add(rotationYLeftButton);
 
 		rotationButtons.add(new JLabel("Axe Y", JLabel.CENTER));
