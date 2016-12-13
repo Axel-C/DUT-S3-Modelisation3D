@@ -65,58 +65,23 @@ public class Fenetre extends JFrame implements KeyListener {
 		translationButtons.setBorder(new TitledBorder("Translation"));
 		JButton upTranslationButton = new JButton("Haut");
 		upTranslationButton.setFocusable(false);
-		upTranslationButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.translateModel(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-
-		});
+		upTranslationButton.addActionListener(new TranslationHaut());
 		translationButtons.add(upTranslationButton, BorderLayout.NORTH);
 		JButton downTranslationButton = new JButton("Bas");
 		downTranslationButton.setFocusable(false);
-		downTranslationButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.translateModel(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-
-		});
+		downTranslationButton.addActionListener(new TranslationBas());
 		translationButtons.add(downTranslationButton, BorderLayout.SOUTH);
 		JButton leftTranslationButton = new JButton("Gauche");
 		leftTranslationButton.setFocusable(false);
-		leftTranslationButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.translateModel(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-
-		});
+		leftTranslationButton.addActionListener(new TranslationGauche());
 		translationButtons.add(leftTranslationButton, BorderLayout.WEST);
 		JButton rightTranslationButton = new JButton("Droite");
 		rightTranslationButton.setFocusable(false);
-		rightTranslationButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-
-		});
+		rightTranslationButton.addActionListener(new TranslationDroite());
 		translationButtons.add(rightTranslationButton, BorderLayout.EAST);
 		JButton adjustementButton = new JButton("Ajuster");
 		adjustementButton.setFocusable(false);
-		adjustementButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.adjustModel();
-				space.repaint();
-			}
-		});
+		adjustementButton.addActionListener(new Ajustement());
 		translationButtons.add(adjustementButton, BorderLayout.CENTER);
 		buttons.add(translationButtons);
 		// Boutons de rotation
@@ -124,26 +89,14 @@ public class Fenetre extends JFrame implements KeyListener {
 		rotationButtons.setBorder(new TitledBorder("Rotation"));
 		JButton rotationXLeftButton = new JButton("Gauche");
 		rotationXLeftButton.setFocusable(false);
-		rotationXLeftButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.X, -2);
-				space.repaint();
-			}
-		});
+		rotationXLeftButton.addActionListener(new RotateXLeft());
 		rotationButtons.add(rotationXLeftButton);
 
 		rotationButtons.add(new JLabel("Axe X", JLabel.CENTER));
 
 		JButton rotationXRightButton = new JButton("Droite");
 		rotationXRightButton.setFocusable(false);
-		rotationXRightButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.X, 2);
-				space.repaint();
-			}
-		});
+		rotationXRightButton.addActionListener(new RotateXRight());
 		rotationButtons.add(rotationXRightButton);
 
 		JButton rotationYLeftButton = new JButton("Gauche");
@@ -155,37 +108,19 @@ public class Fenetre extends JFrame implements KeyListener {
 
 		JButton rotationYRightButton = new JButton("Droite");
 		rotationYRightButton.setFocusable(false);
-		rotationYRightButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.Y, 2);
-				space.repaint();
-			}
-		});
+		rotationYRightButton.addActionListener(new RotateYRight());
 		rotationButtons.add(rotationYRightButton);
 
 		JButton rotationZLeftButton = new JButton("Gauche");
 		rotationZLeftButton.setFocusable(false);
-		rotationZLeftButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.Z, -2);
-				space.repaint();
-			}
-		});
+		rotationZLeftButton.addActionListener(new RotateZLeft());
 		rotationButtons.add(rotationZLeftButton);
 
 		rotationButtons.add(new JLabel("Axe Z", JLabel.CENTER));
 
 		JButton rotationZRightButton = new JButton("Droite");
 		rotationZRightButton.setFocusable(false);
-		rotationZRightButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				space.rotateModel(Axis.Z, 2);
-				space.repaint();
-			}
-		});
+		rotationZRightButton.addActionListener(new RotateZRight());
 		rotationButtons.add(rotationZRightButton);
 		buttons.add(rotationButtons);
 	}
