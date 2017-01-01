@@ -58,7 +58,7 @@ public class Space extends JPanel {
 		} else {
 			model.translate(new Matrix(new double[][]{{center.getX()},{center.getY()},{0}}));
 		}
-			
+
 	}
 
 	/**
@@ -106,30 +106,46 @@ public class Space extends JPanel {
 	 */
 	@Override
 	public void paint(Graphics g) {
+		Model model2 = new Model(model.getFaces());
 		int[] xPoints;
 		int[] yPoints;
+		int[] xPointsOmbre;
+		int[] yPointsOmbre;
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, super.getWidth(), super.getHeight());
-		model.applyPaintersAlgorithm();
+		model2.applyPaintersAlgorithm();
+		for (int i = 0; i < model.getFaces().length; i++) {
+			xPointsOmbre = new int[model.getFaces()[i].getOmbre().length];
+			yPointsOmbre = new int[model.getFaces()[i].getOmbre().length];
+			for (int j = 0; j < model.getFaces()[i].getOmbre().length; j++) {
+				xPointsOmbre[j] = (int) ((model.getFaces()[i].getOmbre()[j].getX()));
+				yPointsOmbre[j] = super.getHeight() - ((int) ((model.getFaces()[i].getOmbre()[j].getY())));				
+			}
+			g.setColor(Color.GRAY);
+			g.fillPolygon(xPointsOmbre, yPointsOmbre, model.getFaces()[i].getOmbre().length);
+		}
+
 		for (int i = 0; i < model.getFaces().length; i++) {
 			xPoints = new int[model.getFaces()[i].getPoints().length];
 			yPoints = new int[model.getFaces()[i].getPoints().length];
+
 			for (int j = 0; j < model.getFaces()[i].getPoints().length; j++) {
 				xPoints[j] = (int) ((model.getFaces()[i].getPoints()[j].getX()));
 				yPoints[j] = super.getHeight() - ((int) ((model.getFaces()[i].getPoints()[j].getY())));
 			}
 			if (paintMode == ONLY_SEGMENTS) {
-				g.setColor(Color.BLACK);
-				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
+				//g.setColor(Color.BLACK);
+				//g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 			} else if (paintMode == ONLY_FACES) {
-				g.setColor(Color.YELLOW);
-				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
+				//g.setColor(Color.YELLOW);
+				//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 			} else {
 				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 				g.setColor(Color.BLACK);
 				g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 			}
+
 		}
 	}
 }

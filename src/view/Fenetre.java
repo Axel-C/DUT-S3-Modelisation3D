@@ -197,6 +197,10 @@ public class Fenetre extends JFrame implements KeyListener {
 			space.rotateModel(Axis.X, 2);
 			space.repaint();
 			break;
+		case KeyEvent.VK_V:
+			space.rotateModel(Axis.Z, 2);
+			space.repaint();
+			break;
 		case KeyEvent.VK_NUMPAD2:
 			space.rotateModel(Axis.X, -2);
 			space.repaint();

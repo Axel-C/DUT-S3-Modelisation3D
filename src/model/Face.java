@@ -8,6 +8,7 @@ package model;
  */
 public class Face {
 	private Point[] points;
+	private Point[] ombre;
 
 	/**
 	 * Instancie une face a partir d'un tableau de points passe en parametre.
@@ -15,9 +16,26 @@ public class Face {
 	 * @param points
 	 *            Le tableau de points.
 	 */
+	
 	public Face(Point[] points) {
 		this.points = points;
+		ombre= new Point[points.length];
 	}
+	
+	
+	/**
+	 * @return Les points dessinant l'ombre de cette face sous forme d'un tableau.
+	 */
+	public Point[] getOmbre() {
+		Matrix m= new Matrix (new double[][] {{1.0,2.0,0.1},{0.0,1.0,0.0},{0.0,0.0,1.0}});
+		for(int i= 0; i< ombre.length; i++) {
+			Matrix res= m.multiply(new Matrix(new double[][] {{points[i].getX()},{points[i].getY()},{points[i].getZ()}}));
+			ombre[i]=new Point(res.getElement(0, 0),res.getElement(1, 0),res.getElement(2, 0));
+		}
+		return ombre;
+	}
+
+
 
 	/**
 	 * @return Les points de cette face sous forme d'un tableau.
