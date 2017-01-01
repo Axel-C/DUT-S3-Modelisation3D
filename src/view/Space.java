@@ -114,15 +114,15 @@ public class Space extends JPanel {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, super.getWidth(), super.getHeight());
 		model2.applyPaintersAlgorithm();
-		for (int i = 0; i < model.getFaces().length; i++) {
-			xPointsOmbre = new int[model.getFaces()[i].getOmbre().length];
-			yPointsOmbre = new int[model.getFaces()[i].getOmbre().length];
-			for (int j = 0; j < model.getFaces()[i].getOmbre().length; j++) {
-				xPointsOmbre[j] = (int) ((model.getFaces()[i].getOmbre()[j].getX()));
-				yPointsOmbre[j] = super.getHeight() - ((int) ((model.getFaces()[i].getOmbre()[j].getY())));				
+		for (int i = 0; i < model2.getFaces().length; i++) {
+			xPointsOmbre = new int[model2.getFaces()[i].getOmbre().length];
+			yPointsOmbre = new int[model2.getFaces()[i].getOmbre().length];
+			for (int j = 0; j < model2.getFaces()[i].getOmbre().length; j++) {
+				xPointsOmbre[j] = (int) ((model2.getFaces()[i].getOmbre()[j].getX()));
+				yPointsOmbre[j] = super.getHeight() - ((int) ((model2.getFaces()[i].getOmbre()[j].getY())));				
 			}
 			g.setColor(Color.GRAY);
-			g.fillPolygon(xPointsOmbre, yPointsOmbre, model.getFaces()[i].getOmbre().length);
+			g.fillPolygon(xPointsOmbre, yPointsOmbre, model2.getFaces()[i].getOmbre().length);
 		}
 
 		for (int i = 0; i < model.getFaces().length; i++) {
