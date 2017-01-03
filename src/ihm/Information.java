@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
 import database.Data;
 import database.Fichier;
 import model.Model;
+import view.Fenetre;
 import view.Space;
 
 public class Information extends JPanel {
@@ -60,6 +61,22 @@ public class Information extends JPanel {
 		controle.add(modifier);
 		JButton ouvrir = new JButton("Ouvrir");
 		controle.add(ouvrir);
+		
+		ouvrir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("DEBUG : " + fichier.path);
+				try {
+					new Fenetre(new Space(new Model(new File(fichier.path)), Space.SEGMENTS_AND_FACES));
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		JButton supprimer = new JButton("Supprimer");
 		controle.add(supprimer);
 		add(controle , BorderLayout.SOUTH);
@@ -85,6 +102,7 @@ public class Information extends JPanel {
 	
 	
 	public void select(Fichier f){
+		fichier = f ;
 		nom.setText("Nom du modele : " + f.nom);
 		path.setText("Chemin d'acces : " + f.path);
 		tags.setText("Mots Cles : " + f.getTagsToString());
