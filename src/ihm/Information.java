@@ -11,11 +11,13 @@ import java.time.Year;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import database.Data;
 import database.Fichier;
+import database.Menu;
 import model.Model;
 import view.Fenetre;
 import view.Space;
@@ -26,9 +28,10 @@ public class Information extends JPanel {
 	JLabel tags ;
 	JLabel nom ;
 	JPanel info = new JPanel();
+	Menu2 menu ;
 	
-	public Information(){
-		
+	public Information(Menu2 menu){
+		this.menu = menu ;
 		
 		LayoutManager layout = new BorderLayout();
 		setLayout(layout);
@@ -59,6 +62,22 @@ public class Information extends JPanel {
 		controle.setLayout(new BoxLayout( controle , BoxLayout.X_AXIS));
 		JButton modifier = new JButton("Modifier");
 		controle.add(modifier);
+		modifier.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Fichier f = Data.getInstance().find(fichier.nom);
+				if (f == null) {
+					JOptionPane.showMessageDialog(null, "Fichier introuvable");
+
+				} else {
+					new Menu(f.nom, f.path, f.getTagsToString(), Menu.MODIFIER);
+				}
+				
+			}
+		});
+		
+		
 		JButton ouvrir = new JButton("Ouvrir");
 		controle.add(ouvrir);
 		
@@ -88,6 +107,12 @@ public class Information extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				Data.getInstance().delete(fichier.id);
+				int x = menu.getX();
+				int y = menu.getY();
+				menu.dispose();
+				Menu2 m = new Menu2();
+				m.setLocation(x, y);
+				
 				
 			}
 		});
