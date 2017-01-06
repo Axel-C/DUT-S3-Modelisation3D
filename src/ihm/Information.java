@@ -87,7 +87,10 @@ public class Information extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("DEBUG : " + fichier.path);
 				try {
-					new Fenetre(new Space(new Model(new File(fichier.path)), Space.SEGMENTS_AND_FACES));
+					Model model = new Model(new File(fichier.path)); 
+					Space space = new Space(model, Space.SEGMENTS_AND_FACES);
+					model.addObserver(space);
+					new Fenetre(space);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

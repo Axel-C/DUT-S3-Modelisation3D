@@ -8,7 +8,6 @@ import model.Axis;
 public final class RotateYLeft extends ModelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		space.rotateModel(Axis.Y, -2);
-		space.repaint();
+		model.rotateModel(Axis.Y, -2);
 	}
 }

@@ -45,13 +45,14 @@ public class Fenetre extends JFrame{
 		this.space = space;
 		globalContainer.add(space, BorderLayout.CENTER);
 		ModelController.setSpace(space); 
+		ModelController.setModel(space.getModel());
 		initializeButtons();
 		globalContainer.add(buttons, BorderLayout.EAST);
 		super.setContentPane(globalContainer);
 		super.addKeyListener(new KeyboardControls(space));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		space.adjustModel();
+		space.getModel().adjust(space);
 		space.repaint();
 	}
 
@@ -134,7 +135,7 @@ public class Fenetre extends JFrame{
 		buttons.add(rotationButtons);
 	}
 
-	@SuppressWarnings("unused")
+	/* @SuppressWarnings("unused")
 	private void initializeOptions() {
 		// TODO
 		options = new JMenuBar();
@@ -169,5 +170,6 @@ public class Fenetre extends JFrame{
 		options.add(new JLabel("Translation Y:"));
 		options.add(yTranslationSlider);
 	}
+	*/
 
 }

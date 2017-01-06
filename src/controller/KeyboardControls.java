@@ -5,14 +5,17 @@ import java.awt.event.KeyListener;
 
 import model.Axis;
 import model.Matrix;
+import model.Model;
 import view.Space;
 
 public class KeyboardControls implements KeyListener {
 	
 	Space space;
+	Model model;
 	
 	public KeyboardControls (Space space) {
 		this.space=space;
+		this.model=space.getModel();
 	}
 	
 
@@ -25,60 +28,46 @@ public class KeyboardControls implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_Z:
-			space.translateModel(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
-			space.repaint();
+			model.translate(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
 			break;
 		case KeyEvent.VK_S:
-			space.translateModel(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
-			space.repaint();
+			model.translate(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
 			break;
 		case KeyEvent.VK_D:
-			space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
-			space.repaint();
+			model.translate(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
 			break;
 		case KeyEvent.VK_Q:
-			space.translateModel(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
-			space.repaint();
+			model.translate(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
 			break;
 		case KeyEvent.VK_A:
-			space.scaleModel(new Matrix(new double[][] { { 1.05 }, { 1.05 }, { 1.05 }, { 1 } }));
-			space.repaint();
+			model.scale(new Matrix(new double[][] { { 1.05 }, { 1.05 }, { 1.05 }, { 1 } }));
 			break;
 		case KeyEvent.VK_E:
-			space.scaleModel(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
-			space.repaint();
+			model.scale(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
 			break;
 		case KeyEvent.VK_NUMPAD8:
-			space.rotateModel(Axis.X, 2);
-			space.repaint();
+			model.rotateModel(Axis.X, 2);
 			break;
 		case KeyEvent.VK_V:
-			space.rotateModel(Axis.Z, 2);
-			space.repaint();
+			model.rotateModel(Axis.Z, 2);
 			break;
 		case KeyEvent.VK_NUMPAD2:
-			space.rotateModel(Axis.X, -2);
-			space.repaint();
+			model.rotateModel(Axis.X, -2);
 			break;
 		case KeyEvent.VK_NUMPAD4:
-			space.rotateModel(Axis.Y, -2);
-			space.repaint();
+			model.rotateModel(Axis.Y, 2);
 			break;
 		case KeyEvent.VK_NUMPAD6:
-			space.rotateModel(Axis.Y, 2);
-			space.repaint();
+			model.rotateModel(Axis.Y, -2);
 			break;
 		case KeyEvent.VK_NUMPAD1:
-			space.rotateModel(Axis.Z, -2);
-			space.repaint();
+			model.rotateModel(Axis.Z, -2);
 			break;
 		case KeyEvent.VK_NUMPAD9:
-			space.rotateModel(Axis.Z, 2);
-			space.repaint();
+			model.rotateModel(Axis.Z, 2);
 			break;
 		case KeyEvent.VK_R:
-			space.adjustModel();
-			space.repaint();
+			model.adjust(space);
 			break;
 		}
 		// System.out.println(space.getModel().getFaces()[0]);

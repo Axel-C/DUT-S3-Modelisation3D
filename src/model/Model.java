@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Observable;
+
+import view.Space;
 
 /**
  * Cette classe represente un modele 3D compose de plusieurs faces.
@@ -14,7 +17,7 @@ import java.util.HashSet;
  * @author Groupe K5
  *
  */
-public class Model {
+public class Model extends Observable {
 	private Face[] faces;
 	private Point[] points;
 
@@ -262,6 +265,8 @@ public class Model {
 				}
 			}
 		}
+		this.setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -280,6 +285,31 @@ public class Model {
 				}
 			}
 		}
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	
+	public void rotateModel(Axis axis, double angleInDegrees) {
+		//placer le centre de la figure en 0,0,0 pour appliquer la rotation
+		Point center = this.getCenter();
+		if (axis==Axis.X) {
+			this.translate(new Matrix(new double[][]{{0},{-center.getY()},{-center.getZ()}}));
+		} else if (axis==Axis.Y) {
+			this.translate(new Matrix(new double[][]{{-center.getX()},{0},{-center.getZ()}}));
+		} else {
+			this.translate(new Matrix(new double[][]{{-center.getX()},{-center.getY()},{0}}));
+		}
+		this.rotate(axis, angleInDegrees);
+		// Replacer la figure dans sa position d'origine.
+		if (axis==Axis.X) {
+			this.translate(new Matrix(new double[][]{{0},{center.getY()},{center.getZ()}}));
+		} else if (axis==Axis.Y) {
+			this.translate(new Matrix(new double[][]{{center.getX()},{0},{center.getZ()}}));
+		} else {
+			this.translate(new Matrix(new double[][]{{center.getX()},{center.getY()},{0}}));
+		}
+
 	}
 
 	/**
@@ -301,6 +331,46 @@ public class Model {
 				}
 			}
 		}
+		this.setChanged();
+		notifyObservers();
+	}
+	
+	public void adjust(Space space) {
+		adjustScaling(space);
+		adjustTranslating(space);
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	/**
+	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
+	 * qui la contient,
+	 */
+	public void adjustScaling(Space space) {
+		int maxWidth = space.getWidth()-100;
+		int maxHeight = space.getHeight()-100;
+		// System.out.println("width : "+maxWidth+" ,Height : "+maxHeight);
+		double range = this.getXMax() - this.getXMin();
+		// System.out.println("range : "+range+" r : "+(maxWidth/range));
+		double rapport;
+		double rapportX = maxWidth / range;
+		range = this.getYMax() - this.getYMin();
+		double rapportY = maxHeight / range;
+		rapport = Math.min(rapportX, rapportY);
+		scale(new Matrix(new double[][] { { rapport }, { rapport }, { rapport }, { 1 } }));
+	}
+
+	/**
+	 * Ajuste le modele en le replacant au centre de la frame.
+	 */
+	public void adjustTranslating(Space space) {
+		int maxWidth = space.getWidth();
+		int maxHeight = space.getHeight();
+		double Xmax = this.getXMax(), Ymax = this.getYMax();
+		double Xmin = this.getXMin(), Ymin = this.getYMin();
+		double translateX = maxWidth / 2 - (Xmax - (Xmax - Xmin) / 2),
+				translateY = maxHeight / 2 - (Ymax - (Ymax - Ymin) / 2);
+		translate(new Matrix(new double[][] { { translateX }, { translateY }, { 0 }, { 1 } }));
 	}
 	
 	public Point getCenter(){

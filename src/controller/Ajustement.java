@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 public final class Ajustement extends ModelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		space.adjustModel();
-		space.repaint();
+		model.adjust(space);
 	}
 }
