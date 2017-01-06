@@ -8,8 +8,8 @@ import javax.swing.JLabel;
 import database.Data;
 
 public class Menu2 extends JFrame{
-	private Navigation liste ;
-	private Information info = new Information() ;
+	public Navigation liste ;
+	private Information info ;
 	
 	public static void main(String[] args ){
 		new Menu2();
@@ -20,6 +20,7 @@ public class Menu2 extends JFrame{
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 		
+		info = new Information(this);
 		liste = new Navigation( info);
 		
 		add(liste, BorderLayout.WEST);
@@ -31,8 +32,13 @@ public class Menu2 extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 400);
 		setVisible(true);
+		
+		
 	}
 	
+	public void ajouter(){
+		
+	}
 	
 	
 }
