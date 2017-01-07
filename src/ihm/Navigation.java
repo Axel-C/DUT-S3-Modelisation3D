@@ -21,7 +21,6 @@ import javax.swing.event.ListSelectionListener;
 
 import database.Data;
 import database.Fichier;
-import database.Main;
 import database.Menu;
 import sun.swing.SwingAccessor;
 
@@ -30,17 +29,16 @@ public class Navigation extends JPanel {
 	ArrayList<Fichier>  cache = Data.getInstance().findAll() ; 
 	Information info ;
 	JList<Fichier> liste ;
+	Menu2 menu ;
 	
-	public Navigation( Information info){
-		this.info = info ;
+	public Navigation( Menu2 menu){
+		this.info = menu.info ;
+		this.menu = menu ;
 		
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 		
-		JTextField search = new JTextField();
-		search.setText("Recherche");
-		search.setMinimumSize(new Dimension(200, 50));
-		add(search, BorderLayout.NORTH);
+		
 		
 		
 		for(Fichier f:cache){
@@ -57,7 +55,8 @@ public class Navigation extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				new Menu(menu);
+				
 				
 			}
 		});
@@ -83,27 +82,11 @@ public class Navigation extends JPanel {
 	}
 	
 	public void refresh(){
-		remove(liste);
-		
-		cache = Data.getInstance().findAll();
-		liste = new JList<>(dataModel) ;
-		add(liste);
-		
-		liste.setFont(new Font("Arial", Font.BOLD, 20));
-		DefaultListCellRenderer renderer = (DefaultListCellRenderer)liste.getCellRenderer() ;
-		renderer.setHorizontalAlignment(SwingConstants.CENTER);
-		liste.setCellRenderer(renderer);
-		liste.addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				info.select(liste.getSelectedValue());
-				
-			}
-		});
-		
-		liste.setSelectedIndex(0);
-		updateUI();
+		int x = menu.getX();
+		int y = menu.getY();
+		menu.dispose();
+		Menu2 m = new Menu2();
+		m.setLocation(x, y);
 		
 		
 		

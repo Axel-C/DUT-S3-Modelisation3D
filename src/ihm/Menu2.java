@@ -9,7 +9,7 @@ import database.Data;
 
 public class Menu2 extends JFrame{
 	public Navigation liste ;
-	private Information info ;
+	public Information info ;
 	
 	public static void main(String[] args ){
 		new Menu2();
@@ -21,7 +21,7 @@ public class Menu2 extends JFrame{
 		setLayout(layout);
 		
 		info = new Information(this);
-		liste = new Navigation( info);
+		liste = new Navigation(this);
 		
 		add(liste, BorderLayout.WEST);
 		add(info , BorderLayout.CENTER);
@@ -36,9 +36,6 @@ public class Menu2 extends JFrame{
 		
 	}
 	
-	public void ajouter(){
-		
-	}
 	
 	
 }

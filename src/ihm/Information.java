@@ -71,7 +71,7 @@ public class Information extends JPanel {
 					JOptionPane.showMessageDialog(null, "Fichier introuvable");
 
 				} else {
-					new Menu(f.nom, f.path, f.getTagsToString(), Menu.MODIFIER);
+					new Menu(f.nom, f.path, f.getTagsToString(), Menu.MODIFIER , menu );
 				}
 				
 			}
@@ -110,11 +110,7 @@ public class Information extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				Data.getInstance().delete(fichier.id);
-				int x = menu.getX();
-				int y = menu.getY();
-				menu.dispose();
-				Menu2 m = new Menu2();
-				m.setLocation(x, y);
+				menu.liste.refresh();
 				
 				
 			}

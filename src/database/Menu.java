@@ -10,10 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import ihm.Menu2;
+import ihm.Navigation;
+
 @SuppressWarnings("serial")
 public class Menu extends JFrame {
 	public static final int AJOUTER = 0 ;
 	public static final int MODIFIER = 1 ;
+	private Menu2 menu;
 	
 	
 	
@@ -24,7 +28,9 @@ public class Menu extends JFrame {
 	 * @param tagsPo mots cles
 	 * @param action 0 pour AJOUTER et 1 pour MODIFIER
 	 */
-	public Menu(String nomPo , String pathPo , String tagsPo , int action){
+	public Menu(String nomPo , String pathPo , String tagsPo , int action , Menu2 menu){
+		this.menu = menu ;
+		System.out.println(menu);
 		setTitle("Nouveau Fichier");
 		setLayout(new GridLayout(5, 2));
 		getContentPane().setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -53,7 +59,8 @@ public class Menu extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					Data.getInstance().add(nom.getText(), tags.getText(), path.getText());
 					Menu.this.dispose();
-					
+					System.out.println(menu);
+					menu.liste.refresh();
 				}
 			});
 			add(ajouter);
@@ -65,6 +72,7 @@ public class Menu extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					Data.getInstance().update(nomPo, nom.getText(), tags.getText(), path.getText());
 					Menu.this.dispose();
+					menu.liste.refresh();
 				}
 			});
 			add(modifier);
@@ -72,17 +80,14 @@ public class Menu extends JFrame {
 		}
 		
 		
-		
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 250);
 		setVisible(true);
 	}
 	/**
 	 * Creer un menu preconstruit pour ajouter
 	 */
-	public Menu(){
-		new Menu("","","",0);
+	public Menu(Menu2 menu){
+		new Menu("","","",0, menu);
 	}
 	
 }
