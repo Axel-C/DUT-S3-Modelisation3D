@@ -9,5 +9,6 @@ public final class RotateYRight extends ModelController implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.rotateModel(Axis.Y, 2);
+		space.repaint();
 	}
 }

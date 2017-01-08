@@ -7,5 +7,6 @@ public final class Ajustement extends ModelController implements ActionListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.adjust(space);
+		space.repaint();
 	}
 }

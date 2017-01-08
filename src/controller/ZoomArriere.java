@@ -9,5 +9,6 @@ public final class ZoomArriere extends ModelController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.scale(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
+		space.repaint();
 	}
 }

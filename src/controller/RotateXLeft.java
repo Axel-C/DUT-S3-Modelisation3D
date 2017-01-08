@@ -9,5 +9,6 @@ public final class RotateXLeft extends ModelController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.rotateModel(Axis.X, -2);
+		space.repaint();
 	}
 }

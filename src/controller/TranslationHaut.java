@@ -9,5 +9,6 @@ public final class TranslationHaut extends ModelController implements ActionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.translate(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
+		space.repaint();
 	}
 }

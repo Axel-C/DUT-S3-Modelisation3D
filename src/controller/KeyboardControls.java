@@ -70,6 +70,7 @@ public class KeyboardControls implements KeyListener {
 			model.adjust(space);
 			break;
 		}
+		space.repaint();
 		// System.out.println(space.getModel().getFaces()[0]);
 	}
 
