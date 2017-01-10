@@ -2,10 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,12 +13,25 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import model.Axis;
+import controller.Ajustement;
+import controller.KeyboardControls;
+import controller.ModelController;
+import controller.RotateXLeft;
+import controller.RotateXRight;
+import controller.RotateYLeft;
+import controller.RotateYRight;
+import controller.RotateZLeft;
+import controller.RotateZRight;
+import controller.TranslationBas;
+import controller.TranslationDroite;
+import controller.TranslationGauche;
+import controller.TranslationHaut;
+import controller.ZoomArriere;
+import controller.ZoomAvant;
 import model.Matrix;
-import controller.*;
 
 @SuppressWarnings("serial")
-public class Fenetre extends JFrame implements KeyListener {
+public class Fenetre extends JFrame{
 
 	private Space space;
 	private JMenuBar options;
@@ -36,13 +45,14 @@ public class Fenetre extends JFrame implements KeyListener {
 		this.space = space;
 		globalContainer.add(space, BorderLayout.CENTER);
 		ModelController.setSpace(space); 
+		ModelController.setModel(space.getModel());
 		initializeButtons();
 		globalContainer.add(buttons, BorderLayout.EAST);
 		super.setContentPane(globalContainer);
-		super.addKeyListener(this);
+		super.addKeyListener(new KeyboardControls(space));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		space.adjustModel();
+		space.getModel().adjust(space);
 		space.repaint();
 	}
 
@@ -87,45 +97,45 @@ public class Fenetre extends JFrame implements KeyListener {
 		// Boutons de rotation
 		JPanel rotationButtons = new JPanel(new GridLayout(3, 3));
 		rotationButtons.setBorder(new TitledBorder("Rotation"));
-		JButton rotationXLeftButton = new JButton("Gauche");
+		JButton rotationXLeftButton = new JButton("Arrière");
 		rotationXLeftButton.setFocusable(false);
 		rotationXLeftButton.addActionListener(new RotateXLeft());
 		rotationButtons.add(rotationXLeftButton);
 
 		rotationButtons.add(new JLabel("Axe X", JLabel.CENTER));
 
-		JButton rotationXRightButton = new JButton("Droite");
+		JButton rotationXRightButton = new JButton("Avant");
 		rotationXRightButton.setFocusable(false);
 		rotationXRightButton.addActionListener(new RotateXRight());
 		rotationButtons.add(rotationXRightButton);
-
-		JButton rotationYLeftButton = new JButton("Gauche");
-		rotationYLeftButton.setFocusable(false);
-		rotationYLeftButton.addActionListener(new RotateYLeft());
-		rotationButtons.add(rotationYLeftButton);
-
-		rotationButtons.add(new JLabel("Axe Y", JLabel.CENTER));
-
-		JButton rotationYRightButton = new JButton("Droite");
+		
+		JButton rotationYRightButton = new JButton("Gauche");
 		rotationYRightButton.setFocusable(false);
 		rotationYRightButton.addActionListener(new RotateYRight());
 		rotationButtons.add(rotationYRightButton);
 
-		JButton rotationZLeftButton = new JButton("Gauche");
+		rotationButtons.add(new JLabel("Axe Y", JLabel.CENTER));
+		
+		JButton rotationYLeftButton = new JButton("Droite");
+		rotationYLeftButton.setFocusable(false);
+		rotationYLeftButton.addActionListener(new RotateYLeft());
+		rotationButtons.add(rotationYLeftButton);
+
+		JButton rotationZLeftButton = new JButton("Horaire");
 		rotationZLeftButton.setFocusable(false);
 		rotationZLeftButton.addActionListener(new RotateZLeft());
 		rotationButtons.add(rotationZLeftButton);
 
 		rotationButtons.add(new JLabel("Axe Z", JLabel.CENTER));
 
-		JButton rotationZRightButton = new JButton("Droite");
+		JButton rotationZRightButton = new JButton("Anti-horaire");
 		rotationZRightButton.setFocusable(false);
 		rotationZRightButton.addActionListener(new RotateZRight());
 		rotationButtons.add(rotationZRightButton);
 		buttons.add(rotationButtons);
 	}
 
-	@SuppressWarnings("unused")
+	/* @SuppressWarnings("unused")
 	private void initializeOptions() {
 		// TODO
 		options = new JMenuBar();
@@ -160,77 +170,6 @@ public class Fenetre extends JFrame implements KeyListener {
 		options.add(new JLabel("Translation Y:"));
 		options.add(yTranslationSlider);
 	}
+	*/
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_Z:
-			space.translateModel(new Matrix(new double[][] { { 0 }, { 5 }, { 0 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_S:
-			space.translateModel(new Matrix(new double[][] { { 0 }, { -5 }, { 0 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_D:
-			space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_Q:
-			space.translateModel(new Matrix(new double[][] { { -5 }, { 0 }, { 0 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_A:
-			space.scaleModel(new Matrix(new double[][] { { 1.05 }, { 1.05 }, { 1.05 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_E:
-			space.scaleModel(new Matrix(new double[][] { { 0.95 }, { 0.95 }, { 0.95 }, { 1 } }));
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD8:
-			space.rotateModel(Axis.X, 2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_V:
-			space.rotateModel(Axis.Z, 2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD2:
-			space.rotateModel(Axis.X, -2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD4:
-			space.rotateModel(Axis.Y, -2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD6:
-			space.rotateModel(Axis.Y, 2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD1:
-			space.rotateModel(Axis.Z, -2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_NUMPAD9:
-			space.rotateModel(Axis.Z, 2);
-			space.repaint();
-			break;
-		case KeyEvent.VK_R:
-			space.adjustModel();
-			space.repaint();
-			break;
-		}
-		// System.out.println(space.getModel().getFaces()[0]);
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-
-	}
 }

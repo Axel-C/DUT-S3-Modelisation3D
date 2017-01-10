@@ -3,6 +3,8 @@ package ihm;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.CellRendererPane;
@@ -19,6 +21,7 @@ import javax.swing.event.ListSelectionListener;
 
 import database.Data;
 import database.Fichier;
+import database.Menu;
 import sun.swing.SwingAccessor;
 
 public class Navigation extends JPanel {
@@ -26,17 +29,16 @@ public class Navigation extends JPanel {
 	ArrayList<Fichier>  cache = Data.getInstance().findAll() ; 
 	Information info ;
 	JList<Fichier> liste ;
+	Menu2 menu ;
 	
-	public Navigation( Information info){
-		this.info = info ;
+	public Navigation( Menu2 menu){
+		this.info = menu.info ;
+		this.menu = menu ;
 		
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 		
-		JTextField search = new JTextField();
-		search.setText("Recherche");
-		search.setMinimumSize(new Dimension(200, 50));
-		add(search, BorderLayout.NORTH);
+		
 		
 		
 		for(Fichier f:cache){
@@ -49,7 +51,15 @@ public class Navigation extends JPanel {
 		
 		JButton ajouter = new JButton("Ajouter");
 		add(ajouter , BorderLayout.SOUTH);
-		
+		ajouter.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Menu(menu);
+				
+				
+			}
+		});
 		
 		setPreferredSize(new Dimension(200, 200));
 		
@@ -70,5 +80,25 @@ public class Navigation extends JPanel {
 		liste.setSelectedIndex(0);
 		
 	}
+	
+	public void refresh(){
+		int x = menu.getX();
+		int y = menu.getY();
+		menu.dispose();
+		Menu2 m = new Menu2();
+		m.setLocation(x, y);
+		
+		
+		
+				
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 
 }

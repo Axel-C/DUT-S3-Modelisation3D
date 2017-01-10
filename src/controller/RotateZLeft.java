@@ -8,7 +8,7 @@ import model.Axis;
 public final class RotateZLeft extends ModelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		space.rotateModel(Axis.Z, -2);
+		model.rotateModel(Axis.Z, -2);
 		space.repaint();
 	}
 }

@@ -94,9 +94,11 @@ public class Data {
 	 */
 	public boolean delete(int id) {
 		try {
+			ouverture();
 			stmt = c.createStatement();
 			String querry = "DELETE FROM Files WHERE id = '" + id + "'";
 			stmt.executeUpdate(querry);
+			fermeture();
 			return true ;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

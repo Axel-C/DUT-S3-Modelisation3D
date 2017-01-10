@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
@@ -11,7 +13,7 @@ import model.Model;
 import model.Point;
 
 @SuppressWarnings("serial")
-public class Space extends JPanel {
+public class Space extends JPanel implements Observer{
 	private Model model;
 	private int paintMode;
 	private Matrix pointEclairage= new Matrix(new double[][] {{-5.0},{-5.0},{-5.0}});
@@ -66,41 +68,7 @@ public class Space extends JPanel {
 	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
 	 * qui la contient, et le modele est replace au centre de la frame.
 	 */
-	public void adjustModel() {
-		adjustScaling();
-		adjustTranslating();
-	}
-
-	/**
-	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
-	 * qui la contient,
-	 */
-	public void adjustScaling() {
-		int maxWidth = super.getWidth()-100;
-		int maxHeight = super.getHeight()-100;
-		// System.out.println("width : "+maxWidth+" ,Height : "+maxHeight);
-		double range = model.getXMax() - model.getXMin();
-		// System.out.println("range : "+range+" r : "+(maxWidth/range));
-		double rapport;
-		double rapportX = maxWidth / range;
-		range = model.getYMax() - model.getYMin();
-		double rapportY = maxHeight / range;
-		rapport = Math.min(rapportX, rapportY);
-		scaleModel(new Matrix(new double[][] { { rapport }, { rapport }, { rapport }, { 1 } }));
-	}
-
-	/**
-	 * Ajuste le modele en le replacant au centre de la frame.
-	 */
-	public void adjustTranslating() {
-		int maxWidth = super.getWidth();
-		int maxHeight = super.getHeight();
-		double Xmax = model.getXMax(), Ymax = model.getYMax();
-		double Xmin = model.getXMin(), Ymin = model.getYMin();
-		double translateX = maxWidth / 2 - (Xmax - (Xmax - Xmin) / 2),
-				translateY = maxHeight / 2 - (Ymax - (Ymax - Ymin) / 2);
-		translateModel(new Matrix(new double[][] { { translateX }, { translateY }, { 0 }, { 1 } }));
-	}
+	
 
 	/**
 	 * 
@@ -174,6 +142,12 @@ public class Space extends JPanel {
 			g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 		}
 
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		this.repaint();
+		
 	}
 }
 

@@ -8,7 +8,7 @@ import model.Matrix;
 public final class TranslationDroite extends ModelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		space.translateModel(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
+		model.translate(new Matrix(new double[][] { { 5 }, { 0 }, { 0 }, { 1 } }));
 		space.repaint();
 	}
 }
