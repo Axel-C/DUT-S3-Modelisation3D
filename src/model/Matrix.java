@@ -121,7 +121,7 @@ public class Matrix {
 	public static Matrix getTranslationMatrix(Matrix columnMatrix) {
 		return new Matrix(
 				new double[][] { { 1, 0, 0, columnMatrix.getElement(0, 0) }, { 0, 1, 0, columnMatrix.getElement(1, 0) },
-						{ 0, 0, 1, columnMatrix.getElement(2, 0) }, { 0, 0, 0, 1 } });
+					{ 0, 0, 1, columnMatrix.getElement(2, 0) }, { 0, 0, 0, 1 } });
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class Matrix {
 	public static Matrix getScalingMatrix(Matrix columnMatrix) {
 		return new Matrix(
 				new double[][] { { columnMatrix.getElement(0, 0), 0, 0, 0 }, { 0, columnMatrix.getElement(1, 0), 0, 0 },
-						{ 0, 0, columnMatrix.getElement(2, 0), 0 }, { 0, 0, 0, 1 } });
+					{ 0, 0, columnMatrix.getElement(2, 0), 0 }, { 0, 0, 0, 1 } });
 	}
 
 	/**
@@ -153,15 +153,25 @@ public class Matrix {
 		if (axis.equals(Axis.X)) {
 			rotationMatrix = new Matrix(
 					new double[][] { { 1, 0, 0, 0 }, { 0, Math.cos(angleInRadians), -Math.sin(angleInRadians), 0 },
-							{ 0, Math.sin(angleInRadians), Math.cos(angleInRadians), 0 }, { 0, 0, 0, 1 } });
+						{ 0, Math.sin(angleInRadians), Math.cos(angleInRadians), 0 }, { 0, 0, 0, 1 } });
 		} else if (axis.equals(Axis.Y)) {
 			rotationMatrix = new Matrix(new double[][] { { Math.cos(angleInRadians), 0, Math.sin(angleInRadians), 0 },
-					{ 0, 1, 0, 0 }, { -Math.sin(angleInRadians), 0, Math.cos(angleInRadians), 0 }, { 0, 0, 0, 1 } });
+				{ 0, 1, 0, 0 }, { -Math.sin(angleInRadians), 0, Math.cos(angleInRadians), 0 }, { 0, 0, 0, 1 } });
 		} else {
 			rotationMatrix = new Matrix(new double[][] { { Math.cos(angleInRadians), -Math.sin(angleInRadians), 0, 0 },
-					{ Math.sin(angleInRadians), Math.cos(angleInRadians), 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
+				{ Math.sin(angleInRadians), Math.cos(angleInRadians), 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
 		}
 		return rotationMatrix;
+	}
+
+	public Matrix subtract(Matrix m) {
+		Matrix sum = new Matrix(this.getM(),this.getN());
+		for(int i=0;i<sum.getM();i++) {
+			for(int j=0;j<sum.getN();j++) {   	
+				sum.setElement(i, j, this.getElement(i, j) - m.getElement(i,j));   	
+			}
+		}	
+		return sum;
 	}
 
 	@Override
