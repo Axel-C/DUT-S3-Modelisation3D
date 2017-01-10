@@ -16,7 +16,7 @@ import model.Point;
 public class Space extends JPanel implements Observer{
 	private Model model;
 	private int paintMode;
-	private Matrix pointEclairage= new Matrix(new double[][] {{-25.0},{10.0},{30.0}});
+	private Matrix pointEclairage= new Matrix(new double[][] {{-20.0},{10.0},{30.0}});
 	public final static int ONLY_SEGMENTS = 1;
 	public final static int ONLY_FACES = 2;
 	public final static int SEGMENTS_AND_FACES = 3;
