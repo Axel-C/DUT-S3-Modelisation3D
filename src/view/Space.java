@@ -115,33 +115,27 @@ public class Space extends JPanel implements Observer{
 					b= 255-(int) (((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0))));
 					if (b>255) {
 						g.setColor(new Color(255,255,255));
-						//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 					} else if (b<0) {
 						g.setColor(new Color(255,255,0));
 					} else {
 						g.setColor(new Color(255,255,b));
-						//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 					}
 				} else if (!(model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0) > pointEclairage.getElement(2, 0))) {
 					b= 255+(int) (((model.getFaces()[i].getZMax()+model.getFaces()[i].normal().getElement(2, 0))));
 					if (b>=255) {
 						g.setColor(new Color(255,255,0));
-						//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 					} else if (b<=0) {
 						g.setColor(new Color(255+b,255+b,0));
 					} else {
 						System.out.println(255-b);
 						g.setColor(new Color(255,255,b));
-						//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 					}
-					//g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 				}
 			}
 			g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 			g.setColor(Color.ORANGE);
 			g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 		}
-
 	}
 
 	@Override
