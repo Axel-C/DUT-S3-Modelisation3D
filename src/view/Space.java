@@ -123,20 +123,19 @@ public class Space extends JPanel implements Observer{
 				} else if ((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)) - pointEclairage.getElement(2, 0) < 0) {
 					b= (int) (((model.getFaces()[i].getZMax()+model.getFaces()[i].normal().getElement(2, 0)))/256);
 					b=(Math.abs(b)*30)+30;
-					System.out.println(b);
 					if (b>=255) {
-						g.setColor(new Color(255,255-(b/256),0));
+						g.setColor(new Color(255,255-(b/256),(b/256)));
 					} else if (b<=0) {
 						g.setColor(new Color(255-(b/256),255-b,0));
 					} else {
-						g.setColor(new Color(255-b,255-b,b));
+						g.setColor(new Color(255-b,255-b,(b/256)));
 					}
 				} else if ((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)) - pointEclairage.getElement(2, 0) == 0) {
 					g.setColor(Color.YELLOW);
 				}
 			}
 			g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
-			g.setColor(Color.ORANGE);
+			g.setColor(Color.BLACK);
 			g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 		}
 	}
