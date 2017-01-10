@@ -16,7 +16,7 @@ import model.Point;
 public class Space extends JPanel implements Observer{
 	private Model model;
 	private int paintMode;
-	private Matrix pointEclairage= new Matrix(new double[][] {{-20.0},{5.0},{20.0}});
+	private Matrix pointEclairage= new Matrix(new double[][] {{-25.0},{10.0},{30.0}});
 	public final static int ONLY_SEGMENTS = 1;
 	public final static int ONLY_FACES = 2;
 	public final static int SEGMENTS_AND_FACES = 3;
@@ -126,6 +126,7 @@ public class Space extends JPanel implements Observer{
 					b= (int) (((model.getFaces()[i].getZMax()+model.getFaces()[i].normal().getElement(2, 0)))/256);
 					b=(Math.abs(b)*30)+30;
 					if (b>255) {
+						System.out.println("bleu + " +g.getColor().toString());
 						g.setColor(new Color(b-255,b-255,0));
 					} else if (b<0) {
 						g.setColor(new Color(b-255,255-b,0));
