@@ -27,10 +27,10 @@ public class Face {
 	 * @return Les points dessinant l'ombre de cette face sous forme d'un tableau.
 	 */
 	public Point[] getOmbre() {
-		Matrix m= new Matrix (new double[][] {{1.0,0.5,0.1},{0.0,0.5,0.0},{0.0,0.0,1.0}});
+		Matrix m= new Matrix (new double[][] {{1.0,0.5,0.1},{0.0,0.5,0.0},{0.0,0.5,1.0}});
 		for(int i= 0; i< ombre.length; i++) {
 			Matrix res= m.multiply(new Matrix(new double[][] {{points[i].getX()},{points[i].getY()},{points[i].getZ()}}));
-			ombre[i]=new Point(res.getElement(0, 0),res.getElement(1, 0),res.getElement(2, 0));
+			ombre[i]=new Point(res.getElement(0, 0)-50,res.getElement(1, 0)+30,res.getElement(2, 0)-50);
 		}
 		return ombre;
 	}

@@ -87,8 +87,8 @@ public class Space extends JPanel implements Observer{
 			xPointsOmbre = new int[model2.getFaces()[i].getOmbre().length];
 			yPointsOmbre = new int[model2.getFaces()[i].getOmbre().length];
 			for (int j = 0; j < model2.getFaces()[i].getOmbre().length; j++) {
-				xPointsOmbre[j] = (int) ((model2.getFaces()[i].getOmbre()[j].getX()));
-				yPointsOmbre[j] = super.getHeight() - ((int) ((model2.getFaces()[i].getOmbre()[j].getY())));				
+				xPointsOmbre[j] = (int) ((model2.getFaces()[i].getOmbre()[j].getX()))- (int) (pointEclairage.getElement(0, 0));
+				yPointsOmbre[j] = super.getHeight() - ((int) ((model2.getFaces()[i].getOmbre()[j].getY())- (int) (pointEclairage.getElement(1, 0))));				
 			}
 			g.setColor(Color.GRAY);
 			g.fillPolygon(xPointsOmbre, yPointsOmbre, model2.getFaces()[i].getOmbre().length);
@@ -109,36 +109,35 @@ public class Space extends JPanel implements Observer{
 				g.setColor(Color.YELLOW);
 				g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 			} else {
-				g.setColor(Color.YELLOW);
 				int b;
-				if((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0) > pointEclairage.getElement(2, 0))) {
+				if((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)) - pointEclairage.getElement(2, 0) > 0) {
 					b= (int) (((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)))/256);
 					b= (Math.abs(b)*30)+30;
-					if (b>255) {
-						g.setColor(new Color(255,255,250));
+					if (b>=255) {
+						g.setColor(new Color(255,255,255));
 					} else if (b<=0) {
 						g.setColor(new Color(255,255,0));
 					} else {
 						g.setColor(new Color(255,255,b));
-						System.out.println("bleu - " +g.getColor().toString());
 					}
-				} else if ((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0) < pointEclairage.getElement(2, 0))) {
+				} else if ((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)) - pointEclairage.getElement(2, 0) < 0) {
 					b= (int) (((model.getFaces()[i].getZMax()+model.getFaces()[i].normal().getElement(2, 0)))/256);
 					b=(Math.abs(b)*30)+30;
-					if (b>255) {
-						System.out.println("bleu + " +g.getColor().toString());
-						g.setColor(new Color(b-255,b-255,0));
-					} else if (b<0) {
-						g.setColor(new Color(b-255,255-b,0));
+					System.out.println(b);
+					if (b>=255) {
+						g.setColor(new Color(255,255-(b/256),0));
+					} else if (b<=0) {
+						g.setColor(new Color(255-(b/256),255-b,0));
 					} else {
-						g.setColor(new Color(255-b,255-b,g.getColor().getBlue()+b));
-						System.out.println("bleu + " +g.getColor().toString());
+						g.setColor(new Color(255-b,255-b,b));
 					}
+				} else if ((model.getFaces()[i].getZMax()-model.getFaces()[i].normal().getElement(2, 0)) - pointEclairage.getElement(2, 0) == 0) {
+					g.setColor(Color.YELLOW);
 				}
 			}
 			g.fillPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
-			//g.setColor(Color.ORANGE);
-			//g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
+			g.setColor(Color.ORANGE);
+			g.drawPolygon(xPoints, yPoints, model.getFaces()[i].getPoints().length);
 		}
 	}
 
