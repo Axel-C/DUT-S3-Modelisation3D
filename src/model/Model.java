@@ -45,6 +45,43 @@ public class Model extends Observable {
 		constructFromPlyFile(plyFile);
 
 	}
+	
+	public Model(String contenu) {
+		Point[] points;
+		String[] lignes = contenu.split("\n");
+		int i = 0;
+		while (!lignes[i].contains("element vertex")) {
+			i++;
+		}
+		points = new Point[(Integer.valueOf(lignes[i].split(" ")[2]))];
+		while (!lignes[i].contains("element face")) {
+			i++;
+		}
+		faces = new Face[(Integer.valueOf(lignes[i].split(" ")[2]))];
+		while (!lignes[i].equals("end_header")) {
+			i++;
+		}
+		i++;
+		Point cache;
+		for (int j = 0; j < points.length; j++) {
+			System.out.println(points.length);
+			cache = new Point(Double.parseDouble(lignes[i].split(" ")[0]), Double.parseDouble(lignes[i].split(" ")[1]),
+					Double.parseDouble(lignes[i].split(" ")[2]));
+			points[j] = cache;
+			i++;
+		}
+
+		for (int j = 1; j < faces.length; j++) {
+			Point[] pointsOfFace = new Point[Integer.parseInt(lignes[i].split(" ")[0])];
+			for (int k = 0; j < pointsOfFace.length; k++) {
+				pointsOfFace[k] = points[Integer.parseInt(lignes[i].split(" ")[k + 1])];
+			}
+			faces[j] = new Face(pointsOfFace);
+		}
+
+		applyPaintersAlgorithm();
+
+	}
 
 	/**
 	 * Renvoie la valeur X du point (parmi les points d'une face) contenu dans
@@ -106,6 +143,12 @@ public class Model extends Observable {
 		return max;
 	}
 	
+	/**
+	 * Renvoie la valeur Z du point (parmi les points d'une face) contenu dans
+	 * le tableau de Face "faces" pour lequel la valeur Z est la plus petite.
+	 * 
+	 * @return Le plus grand Z des faces de ce modele.
+	 */
 	public double getZMax() {
 		double max = faces[0].getZMax();
 		for (int i = 1; i < faces.length; i++) {
@@ -115,6 +158,12 @@ public class Model extends Observable {
 		return max;
 	}
 	
+	/**
+	 * Renvoie la valeur Z du point (parmi les points d'une face) contenu dans
+	 * le tableau de Face "faces" pour lequel la valeur Z est la plus petite.
+	 * 
+	 * @return Le plus petit Z des faces de ce modele.
+	 */
 	public double getZMin() {
 		double min = faces[0].getZMin();
 		for (int i = 1; i < faces.length; i++) {
@@ -143,42 +192,7 @@ public class Model extends Observable {
 		
 	}
 	
-	public Model(String contenu) {
-		Point[] points;
-		String[] lignes = contenu.split("\n");
-		int i = 0;
-		while (!lignes[i].contains("element vertex")) {
-			i++;
-		}
-		points = new Point[(Integer.valueOf(lignes[i].split(" ")[2]))];
-		while (!lignes[i].contains("element face")) {
-			i++;
-		}
-		faces = new Face[(Integer.valueOf(lignes[i].split(" ")[2]))];
-		while (!lignes[i].equals("end_header")) {
-			i++;
-		}
-		i++;
-		Point cache;
-		for (int j = 0; j < points.length; j++) {
-			System.out.println(points.length);
-			cache = new Point(Double.parseDouble(lignes[i].split(" ")[0]), Double.parseDouble(lignes[i].split(" ")[1]),
-					Double.parseDouble(lignes[i].split(" ")[2]));
-			points[j] = cache;
-			i++;
-		}
 
-		for (int j = 1; j < faces.length; j++) {
-			Point[] pointsOfFace = new Point[Integer.parseInt(lignes[i].split(" ")[0])];
-			for (int k = 0; j < pointsOfFace.length; k++) {
-				pointsOfFace[k] = points[Integer.parseInt(lignes[i].split(" ")[k + 1])];
-			}
-			faces[j] = new Face(pointsOfFace);
-		}
-
-		applyPaintersAlgorithm();
-
-	}
 
 	public Face[] getFaces() {
 		return faces;
@@ -292,8 +306,11 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 	
-	
-	
+	/** 
+	 * Applique la rotation du modèle par rapport au centre de la figure
+	 * @param axis L'axe selon lequel où souhaite faire la rotation
+	 * @param angleInDegrees l'angle duquel on souhaite que la figure soit tournée
+	 */
 	public void rotateModel(Axis axis, double angleInDegrees) {
 		//placer le centre de la figure en 0,0,0 pour appliquer la rotation
 		Point center = this.getCenter();

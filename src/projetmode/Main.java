@@ -43,6 +43,11 @@ public class Main {
 		}
 	}
 
+	/**
+	 * 
+	 * @param file Le fichier pour lequel on souhaite savoir si c'est un .ply
+	 * @return true si le fichier est au bon format
+	 */
 	private static boolean isAPlyFile(File file) {
 		String ext = "";
 		if (file.getName().lastIndexOf(".") > 0) {

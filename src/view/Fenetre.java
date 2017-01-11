@@ -135,41 +135,6 @@ public class Fenetre extends JFrame{
 		buttons.add(rotationButtons);
 	}
 
-	/* @SuppressWarnings("unused")
-	private void initializeOptions() {
-		// TODO
-		options = new JMenuBar();
-		final JSlider scalingSlider = new JSlider(0, 5000);
-		final JSlider xTranslationSlider = new JSlider(-super.getWidth() / 2, super.getWidth() * 2);
-		final JSlider yTranslationSlider = new JSlider(-super.getHeight() / 2, super.getHeight() * 2);
-		scalingSlider.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				space.scaleModel(new Matrix(new double[][] { { 1 }, { 1 }, { 1 }, { 1 } }));
-				space.repaint();
-			}
-		});
-		xTranslationSlider.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				space.translateModel(new Matrix(new double[][] { { 0 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-		});
-		yTranslationSlider.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				space.translateModel(new Matrix(new double[][] { { 0 }, { 0 }, { 0 }, { 1 } }));
-				space.repaint();
-			}
-		});
-		options.add(new JLabel("Zoom:"));
-		options.add(scalingSlider);
-		options.add(new JLabel("Translation X:"));
-		options.add(xTranslationSlider);
-		options.add(new JLabel("Translation Y:"));
-		options.add(yTranslationSlider);
-	}
-	*/
+	
 
 }

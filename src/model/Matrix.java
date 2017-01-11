@@ -164,6 +164,11 @@ public class Matrix {
 		return rotationMatrix;
 	}
 
+	/**
+	 * Réalise une soustraction de Matrices
+	 * @param m la matrice qu'on l'on souhaite soustraire à l'objet courant
+	 * @return le résultat de la soustraction
+	 */
 	public Matrix subtract(Matrix m) {
 		Matrix sum = new Matrix(this.getM(),this.getN());
 		for(int i=0;i<sum.getM();i++) {
