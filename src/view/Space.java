@@ -1,16 +1,12 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.*;
+import java.util.*;
 
 import javax.swing.JPanel;
 
-import model.Axis;
 import model.Matrix;
 import model.Model;
-import model.Point;
 
 @SuppressWarnings("serial")
 public class Space extends JPanel implements Observer{
