@@ -276,6 +276,8 @@ public class Model extends Observable {
 	 *            La matrice colonne.
 	 */
 	public void scale(Matrix columnMatrix) {
+		Point center = this.getCenter();
+		this.translate(new Matrix(new double[][]{{-center.getX()},{-center.getY()},{-center.getZ()}}));
 		HashSet<Point> scaledPoints = new HashSet<>();
 		for (int i = 0; i < faces.length; i++) {
 			for (int j = 0; j < faces[i].getPoints().length; j++) {
@@ -285,9 +287,11 @@ public class Model extends Observable {
 				}
 			}
 		}
+		this.translate(new Matrix(new double[][]{{center.getX()},{center.getY()},{center.getZ()}}));
 		this.setChanged();
 		notifyObservers();
 	}
+	
 	
 	
 	public void rotateModel(Axis axis, double angleInDegrees) {
