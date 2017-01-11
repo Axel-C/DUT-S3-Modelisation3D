@@ -34,35 +34,6 @@ public class Space extends JPanel implements Observer{
 		this.paintMode = paintMode;
 	}
 
-	public void translateModel(Matrix columnMatrix) {
-		model.translate(columnMatrix);
-	}
-
-	public void scaleModel(Matrix columnMatrix) {
-		model.scale(columnMatrix);
-	}
-
-	public void rotateModel(Axis axis, double angleInDegrees) {
-		//placer le centre de la figure en 0,0,0 pour appliquer la rotation
-		Point center = model.getCenter();
-		if (axis==Axis.X) {
-			model.translate(new Matrix(new double[][]{{0},{-center.getY()},{-center.getZ()}}));
-		} else if (axis==Axis.Y) {
-			model.translate(new Matrix(new double[][]{{-center.getX()},{0},{-center.getZ()}}));
-		} else {
-			model.translate(new Matrix(new double[][]{{-center.getX()},{-center.getY()},{0}}));
-		}
-		model.rotate(axis, angleInDegrees);
-		// Replacer la figure dans sa position d'origine.
-		if (axis==Axis.X) {
-			model.translate(new Matrix(new double[][]{{0},{center.getY()},{center.getZ()}}));
-		} else if (axis==Axis.Y) {
-			model.translate(new Matrix(new double[][]{{center.getX()},{0},{center.getZ()}}));
-		} else {
-			model.translate(new Matrix(new double[][]{{center.getX()},{center.getY()},{0}}));
-		}
-
-	}
 
 	/**
 	 * Ajuste le modele, sa taille est recalculee suivant la taille de la frame
