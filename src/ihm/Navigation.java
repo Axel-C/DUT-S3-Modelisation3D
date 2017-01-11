@@ -31,6 +31,10 @@ public class Navigation extends JPanel {
 	JList<Fichier> liste ;
 	Menu2 menu ;
 	
+	/**
+	 * Créer un menu de navigation 
+	 * @param menu
+	 */
 	public Navigation( Menu2 menu){
 		this.info = menu.info ;
 		this.menu = menu ;
@@ -81,6 +85,9 @@ public class Navigation extends JPanel {
 		
 	}
 	
+	/**
+	 * Actualise la liste des modeles
+	 */
 	public void refresh(){
 		int x = menu.getX();
 		int y = menu.getY();

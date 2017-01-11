@@ -15,7 +15,9 @@ public class Menu2 extends JFrame{
 		new Menu2();
 	}
 	
-	
+	/**
+	 * Ouvre la fenetre de gestion des modeles BDD
+	 */
 	Menu2(){
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);

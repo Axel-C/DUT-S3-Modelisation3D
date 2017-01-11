@@ -32,6 +32,10 @@ public class Information extends JPanel {
 	Menu2 menu ;
 	JComboBox<String> choix ;
 	
+	/**
+	 * Creer un panel contenant les information du modele selectione
+	 * @param menu
+	 */
 	public Information(Menu2 menu){
 		this.menu = menu ;
 		
@@ -140,7 +144,10 @@ public class Information extends JPanel {
 		
 	}
 	
-	
+	/**
+	 * Selectione un fichier et affiche ses information dans un panel
+	 * @param f
+	 */
 	public void select(Fichier f){
 		fichier = f ;
 		nom.setText("Nom du modele : " + f.nom);
