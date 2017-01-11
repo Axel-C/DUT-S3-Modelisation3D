@@ -10,6 +10,7 @@ import java.time.Year;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class Information extends JPanel {
 	JLabel nom ;
 	JPanel info = new JPanel();
 	Menu2 menu ;
+	JComboBox<String> choix ;
 	
 	public Information(Menu2 menu){
 		this.menu = menu ;
@@ -85,10 +87,19 @@ public class Information extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("DEBUG : " + fichier.path);
+				int item = choix.getSelectedIndex() ;
+				System.out.println(item);
+				int mode = 0 ;
+				if(item == 0){
+					mode = Space.SEGMENTS_AND_FACES ;
+				}else if(item == 1){
+					mode = Space.ONLY_SEGMENTS ;
+				}else if(item == 2){
+					mode = Space.ONLY_FACES ;
+				}
 				try {
 					Model model = new Model(new File(fichier.path)); 
-					Space space = new Space(model, Space.SEGMENTS_AND_FACES);
+					Space space = new Space(model, mode);
 					model.addObserver(space);
 					new Fenetre(space);
 				} catch (Exception e1) {
@@ -118,6 +129,11 @@ public class Information extends JPanel {
 		
 				
 		
+		choix = new JComboBox<>();
+		choix.addItem("Segment et Face");
+		choix.addItem("Segment");
+		choix.addItem("Face");
+		controle.add(choix);
 		
 				
 		
