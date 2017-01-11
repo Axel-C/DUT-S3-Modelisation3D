@@ -69,7 +69,7 @@ public class Face {
 	}
 
 	/**
-	 * @return Retourne le vecteur normal à la face.
+	 * @return Retourne le vecteur normal a la face.
 	 */
 	
 	public Matrix normal() {
@@ -78,7 +78,7 @@ public class Face {
 		v1.setElement(0, 0, (this.getPoints()[1].getX()-this.getPoints()[0].getX()));
 		v1.setElement(1, 0, (this.getPoints()[1].getY()-this.getPoints()[0].getY()));
 		v1.setElement(2, 0, (this.getPoints()[1].getZ()-this.getPoints()[0].getZ()));
-		//Etant donné que les faces sont des triangles, on considérera qu'une face a 3 points
+		//Etant donne que les faces sont des triangles, on considerera qu'une face a 3 points
 		v2.setElement(0, 0, (this.getPoints()[2].getX()-this.getPoints()[0].getX()));
 		v2.setElement(1, 0, (this.getPoints()[2].getY()-this.getPoints()[0].getY()));
 		v2.setElement(2, 0, (this.getPoints()[2].getZ()-this.getPoints()[0].getZ()));
