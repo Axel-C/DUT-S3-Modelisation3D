@@ -50,7 +50,7 @@ public class Fenetre extends JFrame{
 		globalContainer.add(buttons, BorderLayout.EAST);
 		super.setContentPane(globalContainer);
 		super.addKeyListener(new KeyboardControls(space));
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 		space.getModel().adjust(space);
 		space.repaint();
