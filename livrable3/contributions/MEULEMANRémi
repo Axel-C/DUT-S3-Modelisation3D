@@ -1,5 +1,3 @@
-- Développement de la classe "Matrix".
-- Développement de fonctions utiles à la rotation du modèle 3D.
-- Ecriture des tests des classes "Matrix", "Point" et "Face".
-- Ecriture de la javadoc pour les classes "Matrix", "Point" et "Face".
-- Participation au développement des contrôles au clavier et à la construction de l'IHM.
+-Participation à la refonte du projet en MVC
+-Correction de quelques bugs
+-Assistance à la réalisation de l'éclairage/ombre du modéle 3D
